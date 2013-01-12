@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+C:\workspaces\droid-podcast-player\.metadata\.plugins\org.eclipse.jdt.core
+1931144392.index
+2774022063.index
