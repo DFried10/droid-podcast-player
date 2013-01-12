@@ -7,5 +7,10 @@
     <string name="edit_message">Enter a message</string>
     <string name="send_text">Send</string>
     <string name="title_activity_display_message">Message Display</string>
+    <!-- IN USE -->
+    <string name="title_display">Podroid</string>
+    <string name="main_desc">Senior Design Project</string>
+    <string name="mycasts_button_text">My Podcasts</string>
+    <string name="find_button_text">Find Podcasts</string>
 
 </resources>
