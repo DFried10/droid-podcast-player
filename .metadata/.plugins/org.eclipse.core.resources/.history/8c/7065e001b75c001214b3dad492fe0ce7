@@ -22,14 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="edu.android.podcast_listener.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message"
-            android:parentActivityName="edu.android.podcast_listener.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.android.podcast_listener.MainActivity" />
-        </activity>
     </application>
 
 </manifest>
