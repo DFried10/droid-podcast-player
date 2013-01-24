@@ -14,9 +14,6 @@
     <string name="find_button_text">Find Podcasts</string>
     <string name="title_activity_my_casts">MyCastsActivity</string>
     <string name="title_activity_find_casts">FindCastsActivity</string>
-    <!-- COLORS -->
     <color name="black">#000000</color>
-    <color name="silver">#DBDBDB</color>
-    <color name="blue">#94B0FF</color>
 
 </resources>

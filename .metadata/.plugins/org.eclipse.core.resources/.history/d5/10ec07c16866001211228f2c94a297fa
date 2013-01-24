@@ -31,8 +31,7 @@
         android:layout_below="@+id/description"
         android:layout_marginRight="66dp"
         android:onClick="toFindCasts"
-        android:text="@string/find_button_text"
-        android:textColor="@color/silver" />
+        android:text="@string/find_button_text" />
 
     <Button
         android:id="@+id/myCastsButton"
@@ -42,8 +41,7 @@
         android:layout_below="@+id/description"
         android:layout_marginLeft="66dp"
         android:onClick="toMyCasts"
-        android:text="@string/mycasts_button_text"
-        android:textColor="@color/silver" />
+        android:text="@string/mycasts_button_text" />
 
     <TextView
         android:id="@+id/title"
@@ -54,7 +52,6 @@
         android:layout_marginTop="181dp"
         android:gravity="center_horizontal"
         android:text="@string/title_display"
-        android:textSize="40sp"
-        android:textColor="@color/blue" />
+        android:textSize="40sp" />
     
 </RelativeLayout>

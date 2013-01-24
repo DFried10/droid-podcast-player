@@ -9,14 +9,10 @@
     <string name="title_activity_display_message">Message Display</string>
     <!-- IN USE -->
     <string name="title_display">PoDroid</string>
-    <string name="main_desc"></string>
+    <string name="main_desc">Capstone Project</string>
     <string name="mycasts_button_text">My Podcasts</string>
     <string name="find_button_text">Find Podcasts</string>
     <string name="title_activity_my_casts">MyCastsActivity</string>
     <string name="title_activity_find_casts">FindCastsActivity</string>
-    <!-- COLORS -->
-    <color name="black">#000000</color>
-    <color name="silver">#DBDBDB</color>
-    <color name="blue">#94B0FF</color>
 
 </resources>

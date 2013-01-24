@@ -54,7 +54,6 @@
         android:layout_marginTop="181dp"
         android:gravity="center_horizontal"
         android:text="@string/title_display"
-        android:textSize="40sp"
-        android:textColor="@color/blue" />
+        android:textSize="40sp" />
     
 </RelativeLayout>
