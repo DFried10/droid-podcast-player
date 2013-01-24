@@ -30,6 +30,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.android.podcast_listener.MainActivity" />
         </activity>
+        <activity
+            android:name="edu.android.podcast_listener.MyCastsActivity"
+            android:label="@string/title_activity_my_casts"
+            android:parentActivityName="edu.android.podcast_listener.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.android.podcast_listener.MainActivity" />
+        </activity>
+        <activity
+            android:name="edu.android.podcast_listener.FindCastsActivity"
+            android:label="@string/title_activity_find_casts"
+            android:parentActivityName="edu.android.podcast_listener.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.android.podcast_listener.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

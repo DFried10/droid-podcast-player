@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity" >
+    
+    <TextView 
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_display"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"/>
+  
+    <TextView 
+        android:id="@+id/description"
+      	android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_desc"
+        android:textSize="20sp"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true" />
+    
+    <!-- <EditText
+        android:id="@+id/editText1"
+        android:ems="10"
+        android:hint="@string/edit_message" >
+
+        <requestFocus />
+    </EditText> -->
+    <Button
+        android:id="@+id/myCastsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mycasts_button_text"
+        android:onClick="toMyCasts"
+        android:layout_below="@id/description" />
+    <Button 
+        android:id="@+id/findCastsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/find_button_text"
+        android:onClick="toFindCasts"
+        android:layout_below="@id/description"
+        android:layout_toRightOf="@id/myCastsButton" />
+    
+</RelativeLayout>

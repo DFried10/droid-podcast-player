@@ -31,4 +31,14 @@ public class MainActivity extends Activity {
 //    	startActivity(intent);
     }
     
+    public void toMyCasts(View view) {
+    	// TODO - go to the MyCasts activity
+    	Intent intent = new Intent(this, MyCastsActivity.class);
+    	startActivity(intent);
+    }
+    
+    public void toFindCasts(View view) {
+    	// TODO - go to the FindCasts activity
+    }
+    
 }
