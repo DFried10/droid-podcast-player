@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/findCastsButton"
+        android:onClick="toTestPlayer"
         android:text="Test Player" />
     
 </RelativeLayout>

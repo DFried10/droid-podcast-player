@@ -41,4 +41,9 @@ public class MainActivity extends Activity {
     	// TODO - go to the FindCasts activity
     }
     
+    public void toTestPlayer(View view) {
+    	Intent intent = new Intent(this, PlayerActivity.class);
+    	startActivity(intent);
+    }
+    
 }

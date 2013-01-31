@@ -1,19 +1,47 @@
 package edu.android.podcast_listener;
 
+import java.io.IOException;
+
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.widget.MediaController;
+import android.widget.MediaController.MediaPlayerControl;
 import android.support.v4.app.NavUtils;
 
-public class PlayerActivity extends Activity {
-
+public class PlayerActivity extends Activity implements MediaPlayerControl, OnPreparedListener {
+	
+	static final String AUDIO_PATH = "http://media.giantbomb.com/podcast/giantbombcast-011513.mp3";
+	private MediaPlayer mediaPlayer;
+	private MediaController mediaController;
+	private Handler handler = new Handler();
+		    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_player);
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		mediaPlayer = new MediaPlayer();
+		mediaPlayer.setOnPreparedListener(this);
+		mediaController = new MediaController(this);
+		
+		try {
+			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mediaPlayer.setDataSource(AUDIO_PATH);
+			mediaPlayer.prepare();
+			mediaPlayer.start();
+		} catch (IOException e) {
+			Log.e("Player", "Issue opening url " + AUDIO_PATH);
+		}
 	}
 
 	@Override
@@ -21,6 +49,12 @@ public class PlayerActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_player, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		mediaController.show();
+		return false;
 	}
 
 	@Override
@@ -38,6 +72,87 @@ public class PlayerActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void onStop() {
+		super.onStop();
+		mediaPlayer.stop();
+		mediaPlayer.release();		
+	}
+
+	@Override
+	public boolean canPause() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean canSeekBackward() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean canSeekForward() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public int getBufferPercentage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getCurrentPosition() {
+		// TODO Auto-generated method stub
+		return mediaPlayer.getCurrentPosition();
+	}
+
+	@Override
+	public int getDuration() {
+		// TODO Auto-generated method stub
+		return mediaPlayer.getDuration();
+	}
+
+	@Override
+	public boolean isPlaying() {
+		// TODO Auto-generated method stub
+		return mediaPlayer.isPlaying();
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		mediaPlayer.pause();
+	}
+
+	@Override
+	public void seekTo(int time) {
+		// TODO Auto-generated method stub
+		mediaPlayer.seekTo(time);
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		mediaPlayer.start();
+	}
+
+	@Override
+	public void onPrepared(MediaPlayer mediaPlayer) {
+		// TODO Auto-generated method stub
+		Log.d("Player", "onPrepared");
+		mediaController.setMediaPlayer(this);
+		mediaController.setAnchorView(findViewById(R.id.main_player_view));
+		
+		handler.post(new Runnable() {
+			public void run() {
+				mediaController.setEnabled(true);
+				mediaController.show();
+			}
+		});
 	}
 
 }
