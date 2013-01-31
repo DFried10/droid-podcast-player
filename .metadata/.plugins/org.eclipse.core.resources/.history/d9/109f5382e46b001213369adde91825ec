@@ -19,7 +19,4 @@
     <color name="silver">#DBDBDB</color>
     <color name="blue">#94B0FF</color>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_player">PlayerActivity</string>
-
 </resources>

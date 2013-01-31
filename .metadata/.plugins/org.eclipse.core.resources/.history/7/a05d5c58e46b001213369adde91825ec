@@ -56,13 +56,5 @@
         android:text="@string/title_display"
         android:textSize="40sp"
         android:textColor="@color/blue" />
-
-    <Button
-        android:id="@+id/testPlayerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/findCastsButton"
-        android:text="Test Player" />
     
 </RelativeLayout>
