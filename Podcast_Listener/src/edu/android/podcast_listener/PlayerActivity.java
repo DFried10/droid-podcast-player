@@ -25,12 +25,12 @@ import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
+import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 
 public class PlayerActivity extends Activity implements MediaPlayerControl, OnPreparedListener {
 
-	private String audioUrl;
-	private String imageUrl;
+	private String channelTitle, episodeTitle, episodeDesc, imageUrl, audioUrl;
 	private MediaPlayer mediaPlayer;
 	private MediaController mediaController;
 	private Handler handler = new Handler();
@@ -42,8 +42,8 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		Intent intent = getIntent();
-		audioUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
-		imageUrl = intent.getStringExtra(PodcastConstants.IMAGE_MESSAGE);
+		configureTextDisplay(intent);
+		
 		mediaPlayer = new MediaPlayer();
 		mediaPlayer.setOnPreparedListener(this);
 		mediaController = new MediaController(this);
@@ -87,6 +87,21 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void configureTextDisplay(Intent intent) {
+		audioUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
+		imageUrl = intent.getStringExtra(PodcastConstants.IMAGE_MESSAGE);
+		channelTitle = intent.getStringExtra(PodcastConstants.TITLE_MESSAGE);
+		episodeTitle = intent.getStringExtra(PodcastConstants.EPISODE_MESSAGE);
+		episodeDesc = intent.getStringExtra(PodcastConstants.EPISODE_DESC);
+		
+		TextView channel = (TextView) findViewById(R.id.channelTitle);
+		TextView episode = (TextView) findViewById(R.id.episodeTitle);
+		TextView desc = (TextView) findViewById(R.id.episodeDesc);
+		channel.setText(channelTitle);
+		episode.setText(episodeTitle);
+		desc.setText(episodeDesc);
 	}
 	
 	public void onStop() {

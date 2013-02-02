@@ -8,19 +8,22 @@
     <string name="send_text">Send</string>
     <string name="title_activity_display_message">Message Display</string>
     <!-- IN USE -->
-    <string name="title_display">PoDroid</string>
+    <string name="title_display">DroidCast</string>
     <string name="main_desc"></string>
     <string name="mycasts_button_text">My Podcasts</string>
     <string name="find_button_text">Find Podcasts</string>
-    <string name="title_activity_my_casts">MyCastsActivity</string>
-    <string name="title_activity_find_casts">FindCastsActivity</string>
+    <string name="title_activity_my_casts">MyCasts</string>
+    <string name="title_activity_find_casts">FindCasts</string>
+    <string name="title_activity_player">DroidCast Player</string>
+    <string name="title_activity_find_casts_results">FoundCasts</string>
+    <string name="find_casts_button">Find Podcasts!</string>
+    <string name="find_casts_hint">Enter RSS URL for Podcast</string>
+    <string name="player_now_playing">Now Playing:</string>
     <!-- COLORS -->
     <color name="black">#000000</color>
     <color name="silver">#DBDBDB</color>
     <color name="blue">#94B0FF</color>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_player">PlayerActivity</string>
-    <string name="title_activity_find_casts_results">FindCastsResultsActivity</string>
+    
 
 </resources>

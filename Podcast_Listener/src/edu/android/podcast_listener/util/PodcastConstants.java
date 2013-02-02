@@ -3,6 +3,9 @@ package edu.android.podcast_listener.util;
 public class PodcastConstants {
 	public static final String EXTRA_MESSAGE = "edu.android.podcast_listener.EXTRA_MESSAGE";
 	public static final String IMAGE_MESSAGE = "edu.android.podcast_listener.IMAGE_MESSAGE";
+	public static final String TITLE_MESSAGE = "edu.android.podcast_listener.TITLE_MESSAGE";
+	public static final String EPISODE_MESSAGE = "edu.android.podcast_listener.EPISODE_MESSAGE";
+	public static final String EPISODE_DESC = "edu.android.podcast_listener.EPISODE_DESC";
 	public static final String ERROR_TAG = "ERROR";
 	public static final String DEBUG_TAG = "DEBUG";
 	public static final String PLAYER_TAG = "PLAYER";

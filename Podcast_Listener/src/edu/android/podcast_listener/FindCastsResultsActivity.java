@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ import edu.android.podcast_listener.util.PodcastConstants;
 public class FindCastsResultsActivity extends Activity {
 	ListView listView;
 	String image;
+	ProgressDialog progressDialog;
+	String channelTitle;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class FindCastsResultsActivity extends Activity {
 		Intent intent = getIntent();
 		String rssUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
 		listView = (ListView) findViewById(R.id.podcastsList);
+		progressDialog = new ProgressDialog(this);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -53,9 +57,11 @@ public class FindCastsResultsActivity extends Activity {
 					long id) {
 				Intent intent = new Intent(getApplicationContext(), PlayerActivity.class);
 				Item listItem = (Item) listView.getItemAtPosition(position);
-				String urlOfPodcast = listItem.getLink();
-				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, urlOfPodcast);
+				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, listItem.getLink());
 				intent.putExtra(PodcastConstants.IMAGE_MESSAGE, image);
+				intent.putExtra(PodcastConstants.TITLE_MESSAGE, channelTitle);
+				intent.putExtra(PodcastConstants.EPISODE_MESSAGE, listItem.getTitle());
+				intent.putExtra(PodcastConstants.EPISODE_DESC, listItem.getDescription());
 				startActivity(intent);
 			}
 					
@@ -91,6 +97,12 @@ public class FindCastsResultsActivity extends Activity {
 	class RSSAsyncActivity extends AsyncTask<String, Void, Channel> {
 		
 		@Override
+		protected void onPreExecute() {
+			progressDialog = ProgressDialog.show(FindCastsResultsActivity.this,"","Just a second, getting your podcasts...", true,false);
+			super.onPreExecute();
+		}
+		
+		@Override
 		protected Channel doInBackground(String... urls) {
 			try {				
 				URL url = new URL(urls[0]);
@@ -100,6 +112,7 @@ public class FindCastsResultsActivity extends Activity {
 				SyndFeed feed = syndPut.build(xmlReader);
 				List entries = feed.getEntries();
 				String imgUrl = feed.getImage().getUrl();
+				String channelTitle = feed.getTitle();
 				
 				Iterator itr = entries.iterator();
 				Channel channel = new Channel();
@@ -120,6 +133,7 @@ public class FindCastsResultsActivity extends Activity {
 				}
 				channel.setItems(items);
 				channel.setImage(imgUrl);
+				channel.setTitle(channelTitle);
 				
 				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
 				
@@ -139,6 +153,8 @@ public class FindCastsResultsActivity extends Activity {
 			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
 			listView.setAdapter(adapter);
 			image = channel.getImage();
+			channelTitle = channel.getTitle();
+			progressDialog.dismiss();
 			} catch (NullPointerException e) {
 				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here");
 			}

@@ -33,9 +33,12 @@ public class ItemsAdapter extends ArrayAdapter<Item> {
         if (item!= null) {
             // My layout has only one TextView
             TextView itemView = (TextView) view.findViewById(R.id.txtTitle);
+            TextView itemDesc = (TextView) view.findViewById(R.id.textDesc);
             if (itemView != null) {
-                // do whatever you want with your string and long
-                itemView.setText(String.format("%s : %s : %dMB", item.getTitle(), item.getDescription(), item.getSize()/1000));
+                itemView.setText(String.format("%s%n", item.getTitle()));
+            }
+            if (itemDesc != null) {
+            	itemDesc.setText(String.format("%s : %dMB", item.getDescription(), item.getSize()/1000000));
             }
          }
 

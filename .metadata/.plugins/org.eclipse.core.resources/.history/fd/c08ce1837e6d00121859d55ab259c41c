@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_player_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayerActivity"
+    android:background="@color/black" >
+
+    <LinearLayout >
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/player_now_playing"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:textColor="@color/blue" />
+	    <TextView 
+	        android:id="@+id/channelTitle"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:layout_marginTop="10dp"
+	        android:textSize="20sp"
+	        android:textColor="@color/blue" />
+	    <TextView 
+	        android:id="@+id/episodeTitle"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:textColor="@color/blue"
+	        android:textSize="14sp"
+	        android:layout_below="@id/channelTitle" />
+    </LinearLayout>
+    
+    <ImageView 
+        android:id="@+id/podcastImage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/episodeTitle" />
+
+</RelativeLayout>
