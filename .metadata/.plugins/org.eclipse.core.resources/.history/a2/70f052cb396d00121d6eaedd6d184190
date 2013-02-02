@@ -50,7 +50,6 @@ public class FindCastsResultsActivity extends Activity {
 		
 		new RSSAsyncActivity().execute(rssUrl);
 		
-		
 	}
 
 	@Override
@@ -77,63 +76,59 @@ public class FindCastsResultsActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	class RSSAsyncActivity extends AsyncTask<String, Void, Channel> {
+	class RSSAsyncActivity extends AsyncTask<String, Void, ArrayAdapter<Item>> {
+		ArrayAdapter<Item> adapter = new ArrayAdapter<Item>(getApplicationContext(), R.layout.activity_find_casts_results, R.id.txtTitle);;
 		
 		@Override
-		protected Channel doInBackground(String... urls) {
-			try {			
-	//			SAXParserFactory saxFactory = SAXParserFactory.newInstance();
-	//			SAXParser parser = saxFactory.newSAXParser();
-	//			XMLReader xmlReader = parser.getXMLReader();
-				URL url = new URL(urls[0]);
-	//			InputSource input = new InputSource(url.openStream());
-				
-				Log.d("DEBUG", "Entered the XML Parsing section: " + url.getPath());
-				
-				SyndFeedInput syndPut = new SyndFeedInput();
-				XmlReader xmlReader = new XmlReader(url);
-				SyndFeed feed = syndPut.build(xmlReader);
-				List entries = feed.getEntries();
-				
-				Iterator itr = entries.iterator();
-				Channel channel = new Channel();
-				Items items = new Items();
-				while (itr.hasNext()) {
-					SyndEntry entry = (SyndEntry) itr.next();
-					String title = entry.getTitle();
-					String description = entry.getDescription().getValue();
-					String link = entry.getLink();
-	//				Date pubDate = entry.getPublishedDate();
-					Item item = new Item();
-					item.setTitle(title);
-					item.setDescription(description);
-					item.setGuid(link);
-					items.add(item);
-				}
-				channel.setItems(items);
-				Log.d("DEBUG", "Completed parsing RSS feed");
-	//			RSSHandler rssHandler = new RSSHandler();
-	//			xmlReader.setContentHandler(rssHandler);
-	//			xmlReader.parse(input);			
-	//			Channel channelInfo = rssHandler.getParsedChannelData();			
-				return channel;
-			} catch (IOException e) {
-				Log.e(ERROR_TAG, "Error in the Input parsing: " + e.getMessage());
-			} catch (IllegalArgumentException e) {
-				Log.e(ERROR_TAG, "An error occured in the arguments: " + e.getMessage());
-			} catch (FeedException e) {
-				Log.e(ERROR_TAG, "An error occured in the feed: " + e.getMessage());
+		protected ArrayAdapter<Item> doInBackground(String... urls) {
+			// TODO Auto-generated method stub
+		try {			
+//			SAXParserFactory saxFactory = SAXParserFactory.newInstance();
+//			SAXParser parser = saxFactory.newSAXParser();
+//			XMLReader xmlReader = parser.getXMLReader();
+			URL url = new URL(urls[0]);
+//			InputSource input = new InputSource(url.openStream());
+			
+			Log.d("DEBUG", "Entered the XML Parsing section: " + url.getPath());
+			
+			SyndFeedInput syndPut = new SyndFeedInput();
+			XmlReader xmlReader = new XmlReader(url);
+			SyndFeed feed = syndPut.build(xmlReader);
+			List entries = feed.getEntries();
+			
+			Iterator itr = entries.iterator();
+			while (itr.hasNext()) {
+				SyndEntry entry = (SyndEntry) itr.next();
+				String title = entry.getTitle();
+				String description = entry.getDescription().getValue();
+				String link = entry.getLink();
+//				Date pubDate = entry.getPublishedDate();
+				Item item = new Item();
+				item.setTitle(title);
+				item.setDescription(description);
+				item.setGuid(link);
+				adapter.add(item);
 			}
-			return null;
-		}
-		
-		protected void onPostExecute(Channel feed) {
-	        // TODO: check this.exception 
-	        // TODO: do something with the feed
-			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, feed.getItems());
+			adapter.notifyDataSetChanged();
+//			RSSHandler rssHandler = new RSSHandler();
+//			xmlReader.setContentHandler(rssHandler);
+//			xmlReader.parse(input);
+			
+//			Channel channelInfo = rssHandler.getParsedChannelData();
+			
 			ListView listView = (ListView) findViewById(R.id.podcastsList);
 //			ItemsAdapter items = new ItemsAdapter(getApplicationContext(), R.id.txtTitle, channelInfo.getItems());
 			listView.setAdapter(adapter);
+			
+			return adapter;
+		} catch (IOException e) {
+			Log.e(ERROR_TAG, "Error in the Input parsing: " + e.getMessage());
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (FeedException e) {
+			e.printStackTrace();
+		}
+			return null;
 		}
 		
 	}

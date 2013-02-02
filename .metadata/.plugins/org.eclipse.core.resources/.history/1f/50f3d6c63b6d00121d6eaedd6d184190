@@ -35,7 +35,7 @@ public class ItemsAdapter extends ArrayAdapter<Item> {
             TextView itemView = (TextView) view.findViewById(R.id.txtTitle);
             if (itemView != null) {
                 // do whatever you want with your string and long
-                itemView.setText(String.format("%s : %s", item.getTitle(), item.getDescription()));
+                itemView.setText(String.format("%s %d", item.getTitle(), item.getDescription()));
             }
          }
 

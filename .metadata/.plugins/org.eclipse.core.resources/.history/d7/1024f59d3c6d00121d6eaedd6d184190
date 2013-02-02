@@ -50,7 +50,6 @@ public class FindCastsResultsActivity extends Activity {
 		
 		new RSSAsyncActivity().execute(rssUrl);
 		
-		
 	}
 
 	@Override

@@ -50,7 +50,6 @@ public class FindCastsResultsActivity extends Activity {
 		
 		new RSSAsyncActivity().execute(rssUrl);
 		
-		
 	}
 
 	@Override
@@ -130,7 +129,7 @@ public class FindCastsResultsActivity extends Activity {
 		protected void onPostExecute(Channel feed) {
 	        // TODO: check this.exception 
 	        // TODO: do something with the feed
-			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, feed.getItems());
+			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.activity_find_casts_results, feed.getItems());
 			ListView listView = (ListView) findViewById(R.id.podcastsList);
 //			ItemsAdapter items = new ItemsAdapter(getApplicationContext(), R.id.txtTitle, channelInfo.getItems());
 			listView.setAdapter(adapter);

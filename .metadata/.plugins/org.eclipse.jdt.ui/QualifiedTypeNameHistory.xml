@@ -19,7 +19,6 @@
 <fullyQualifiedTypeName name="android.widget.EditText"/>
 <fullyQualifiedTypeName name="javax.xml.parsers.SAXParserFactory"/>
 <fullyQualifiedTypeName name="javax.xml.parsers.SAXParser"/>
-<fullyQualifiedTypeName name="org.xml.sax.XMLReader"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.rss.RSSHandler"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.rss.Channel"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
@@ -38,9 +37,14 @@
 <fullyQualifiedTypeName name="android.view.ViewGroup"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.rss.Item"/>
-<fullyQualifiedTypeName name="edu.android.podcast_listener.R.id"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.FindCastsActivity"/>
 <fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.FindCastsResultsActivity.RSSAsyncActivity"/>
+<fullyQualifiedTypeName name="com.sun.syndication.io.SyndFeedInput"/>
+<fullyQualifiedTypeName name="org.xml.sax.XMLReader"/>
+<fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndFeed"/>
+<fullyQualifiedTypeName name="com.sun.syndication.io.XmlReader"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.R.id"/>
 </qualifiedTypeNameHistroy>
