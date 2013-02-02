@@ -1,9 +1,6 @@
 package edu.android.podcast_listener;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import edu.android.podcast_listener.util.PodcastConstants;
 
@@ -11,18 +8,14 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
 import android.support.v4.app.NavUtils;
@@ -30,7 +23,6 @@ import android.support.v4.app.NavUtils;
 public class PlayerActivity extends Activity implements MediaPlayerControl, OnPreparedListener {
 
 	private String audioUrl;
-	private String imageUrl;
 	private MediaPlayer mediaPlayer;
 	private MediaController mediaController;
 	private Handler handler = new Handler();
@@ -43,12 +35,10 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		Intent intent = getIntent();
 		audioUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
-		imageUrl = intent.getStringExtra(PodcastConstants.IMAGE_MESSAGE);
 		mediaPlayer = new MediaPlayer();
 		mediaPlayer.setOnPreparedListener(this);
 		mediaController = new MediaController(this);
 		
-		new AsyncImage().execute(imageUrl);
 		try {
 			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 			mediaPlayer.setDataSource(audioUrl);
@@ -170,26 +160,4 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 		});
 	}
 
-	class AsyncImage extends AsyncTask<String, Void, Bitmap> {
-
-		@Override
-		protected Bitmap doInBackground(String... params) {
-			try {				  
-			  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(params[0]).getContent());
-			  return bitmap;				  
-			} catch (MalformedURLException e) {
-				Log.e(PodcastConstants.ERROR_TAG, "Issue with Image URL [" + imageUrl + "] : " + e.getMessage());
-			} catch (IOException e) {
-			  	Log.e(PodcastConstants.ERROR_TAG, "Issue decoding URL input stream [" + imageUrl +"] : " + e.getMessage());
-			}
-			return null;
-		}
-		
-		@Override
-		protected void onPostExecute(Bitmap bitmap) {
-			ImageView i = (ImageView)findViewById(R.id.podcastImage);
-			i.setImageBitmap(bitmap); 
-		}
-		
-	}
 }

@@ -9,7 +9,6 @@ public class Channel implements Serializable {
 	private String link;
 	private String description;
 	private String language;
-	private String image;
 	
 	public Channel() {
 		setItems(null);
@@ -17,7 +16,6 @@ public class Channel implements Serializable {
 		setLink(null);
 		setDescription(null);
 		setLanguage(null);
-		setImage(null);
 	}
 
 	public Items getItems() {
@@ -58,13 +56,5 @@ public class Channel implements Serializable {
 
 	public void setLanguage(String language) {
 		this.language = language;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 }

@@ -48,7 +48,7 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 		mediaPlayer.setOnPreparedListener(this);
 		mediaController = new MediaController(this);
 		
-		new AsyncImage().execute(imageUrl);
+		
 		try {
 			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 			mediaPlayer.setDataSource(audioUrl);
@@ -175,7 +175,7 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			try {				  
-			  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(params[0]).getContent());
+			  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
 			  return bitmap;				  
 			} catch (MalformedURLException e) {
 				Log.e(PodcastConstants.ERROR_TAG, "Issue with Image URL [" + imageUrl + "] : " + e.getMessage());

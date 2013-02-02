@@ -19,7 +19,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.sun.syndication.feed.synd.SyndEnclosure;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
@@ -33,7 +32,6 @@ import edu.android.podcast_listener.util.PodcastConstants;
 
 public class FindCastsResultsActivity extends Activity {
 	ListView listView;
-	String image;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +53,6 @@ public class FindCastsResultsActivity extends Activity {
 				Item listItem = (Item) listView.getItemAtPosition(position);
 				String urlOfPodcast = listItem.getLink();
 				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, urlOfPodcast);
-				intent.putExtra(PodcastConstants.IMAGE_MESSAGE, image);
 				startActivity(intent);
 			}
 					
@@ -92,14 +89,19 @@ public class FindCastsResultsActivity extends Activity {
 		
 		@Override
 		protected Channel doInBackground(String... urls) {
-			try {				
+			try {			
+	//			SAXParserFactory saxFactory = SAXParserFactory.newInstance();
+	//			SAXParser parser = saxFactory.newSAXParser();
+	//			XMLReader xmlReader = parser.getXMLReader();
 				URL url = new URL(urls[0]);
+	//			InputSource input = new InputSource(url.openStream());
+				
 				Log.d(PodcastConstants.DEBUG_TAG, "Entered the XML Parsing section: " + url.getPath());
+				
 				SyndFeedInput syndPut = new SyndFeedInput();
 				XmlReader xmlReader = new XmlReader(url);
 				SyndFeed feed = syndPut.build(xmlReader);
 				List entries = feed.getEntries();
-				String imgUrl = feed.getImage().getUrl();
 				
 				Iterator itr = entries.iterator();
 				Channel channel = new Channel();
@@ -114,15 +116,16 @@ public class FindCastsResultsActivity extends Activity {
 					Item item = new Item();
 					item.setTitle(title);
 					item.setDescription(description);
-					item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
-					item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
+					item.setLink((String)enclosures.get(0));
+					item.setSize(Integer.parseInt((String)enclosures.get(1)));
 					items.add(item);
 				}
 				channel.setItems(items);
-				channel.setImage(imgUrl);
-				
 				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
-				
+	//			RSSHandler rssHandler = new RSSHandler();
+	//			xmlReader.setContentHandler(rssHandler);
+	//			xmlReader.parse(input);			
+	//			Channel channelInfo = rssHandler.getParsedChannelData();			
 				return channel;
 			} catch (IOException e) {
 				Log.e(PodcastConstants.ERROR_TAG, "Error in the Input parsing: " + e.getMessage());
@@ -135,10 +138,11 @@ public class FindCastsResultsActivity extends Activity {
 		}
 		
 		protected void onPostExecute(Channel channel) {
+	        // TODO: check this.exception 
+	        // TODO: do something with the feed
 			try {
 			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
 			listView.setAdapter(adapter);
-			image = channel.getImage();
 			} catch (NullPointerException e) {
 				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here");
 			}

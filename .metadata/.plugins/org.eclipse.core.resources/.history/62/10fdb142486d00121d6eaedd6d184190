@@ -55,7 +55,6 @@ public class FindCastsResultsActivity extends Activity {
 				Item listItem = (Item) listView.getItemAtPosition(position);
 				String urlOfPodcast = listItem.getLink();
 				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, urlOfPodcast);
-				intent.putExtra(PodcastConstants.IMAGE_MESSAGE, image);
 				startActivity(intent);
 			}
 					

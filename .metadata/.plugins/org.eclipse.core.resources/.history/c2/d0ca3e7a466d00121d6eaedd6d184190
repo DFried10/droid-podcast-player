@@ -51,7 +51,7 @@ public class Item implements Serializable {
 		return size;
 	}
 
-	public void setSize(long size) {
+	public long setSize(long size) {
 		this.size = size;
 	}
 }

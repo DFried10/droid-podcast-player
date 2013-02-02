@@ -33,7 +33,6 @@ import edu.android.podcast_listener.util.PodcastConstants;
 
 public class FindCastsResultsActivity extends Activity {
 	ListView listView;
-	String image;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,6 @@ public class FindCastsResultsActivity extends Activity {
 				Item listItem = (Item) listView.getItemAtPosition(position);
 				String urlOfPodcast = listItem.getLink();
 				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, urlOfPodcast);
-				intent.putExtra(PodcastConstants.IMAGE_MESSAGE, image);
 				startActivity(intent);
 			}
 					
@@ -138,7 +136,6 @@ public class FindCastsResultsActivity extends Activity {
 			try {
 			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
 			listView.setAdapter(adapter);
-			image = channel.getImage();
 			} catch (NullPointerException e) {
 				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here");
 			}

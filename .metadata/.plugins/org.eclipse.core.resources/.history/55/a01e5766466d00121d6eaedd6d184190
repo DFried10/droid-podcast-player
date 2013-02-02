@@ -9,7 +9,7 @@ public class Item implements Serializable {
 	private String description;
 	private String pubDate;
 	private String link;
-	private long size;
+	private int size;
 	
 	public Item() {
 		
@@ -47,11 +47,11 @@ public class Item implements Serializable {
 		this.link = link;
 	}
 
-	public long getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	public void setSize(long size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 }
