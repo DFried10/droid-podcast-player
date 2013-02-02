@@ -30,7 +30,7 @@
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.PropertiesFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -55,6 +55,9 @@
 <part id="12"/>
 <part id="13"/>
 <part id="14"/>
+<part id="15"/>
+<part id="16"/>
+<part id="17"/>
 </presentation>
 </folder>
 </info>
@@ -67,7 +70,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" partName="MainActivity.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/MainActivity.java" title="MainActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/MainActivity.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/MainActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1434" selectionTopPixel="230"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="635" selectionTopPixel="43"/>
 </editor>
 <editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_my_casts.xml" partName="activity_my_casts.xml" path="C:/workspaces/droid-podcast-player/Podcast_Listener/res/layout/activity_my_casts.xml" title="activity_my_casts.xml" tooltip="Podcast_Listener/res/layout/activity_my_casts.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/res/layout/activity_my_casts.xml"/>
@@ -85,13 +88,13 @@
 <editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_find_casts_results.xml" partName="activity_find_casts_results.xml" path="C:/workspaces/droid-podcast-player/Podcast_Listener/res/layout/activity_find_casts_results.xml" title="activity_find_casts_results.xml" tooltip="Podcast_Listener/res/layout/activity_find_casts_results.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/res/layout/activity_find_casts_results.xml"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindCastsResultsActivity.java" partName="FindCastsResultsActivity.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/FindCastsResultsActivity.java" title="FindCastsResultsActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/FindCastsResultsActivity.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindCastsResultsActivity.java" partName="FindCastsResultsActivity.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/FindCastsResultsActivity.java" title="FindCastsResultsActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/FindCastsResultsActivity.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/FindCastsResultsActivity.java"/>
-<editorState selectionHorizontalPixel="14" selectionLength="0" selectionOffset="3541" selectionTopPixel="1261"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2081" selectionTopPixel="90"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Channel.java" partName="Channel.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/rss/Channel.java" title="Channel.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/rss/Channel.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/rss/Channel.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="123" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="490" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Items.java" partName="Items.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/rss/Items.java" title="Items.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/rss/Items.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/rss/Items.java"/>
@@ -99,7 +102,7 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Item.java" partName="Item.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/rss/Item.java" title="Item.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/rss/Item.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/rss/Item.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="123" selectionTopPixel="45"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="351" selectionTopPixel="253"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSSHandler.java" partName="RSSHandler.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/rss/RSSHandler.java" title="RSSHandler.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/rss/RSSHandler.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/rss/RSSHandler.java"/>
@@ -107,11 +110,22 @@
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindCastsActivity.java" partName="FindCastsActivity.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/FindCastsActivity.java" title="FindCastsActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/FindCastsActivity.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/FindCastsActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1807" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="797" selectionTopPixel="103"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ItemsAdapter.java" partName="ItemsAdapter.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/ItemsAdapter.java" title="ItemsAdapter.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/ItemsAdapter.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/ItemsAdapter.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1023" selectionTopPixel="5"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="633" selectionTopPixel="0"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_row_item.xml" partName="listview_row_item.xml" path="C:/workspaces/droid-podcast-player/Podcast_Listener/res/layout/listview_row_item.xml" title="listview_row_item.xml" tooltip="Podcast_Listener/res/layout/listview_row_item.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/res/layout/listview_row_item.xml"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PlayerActivity.java" partName="PlayerActivity.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/PlayerActivity.java" title="PlayerActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/PlayerActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/PlayerActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4309" selectionTopPixel="1948"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PodcastConstants.java" partName="PodcastConstants.java" path="C:/workspaces/droid-podcast-player/Podcast_Listener/src/edu/android/podcast_listener/util/PodcastConstants.java" title="PodcastConstants.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/util/PodcastConstants.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Podcast_Listener/src/edu/android/podcast_listener/util/PodcastConstants.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="91" selectionOffset="170" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -245,15 +259,20 @@
 <perspective_action id="com.android.ide.eclipse.hierarchyviewer.TreeViewPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.jdt.ui.JavadocView"/>
-<view id="org.eclipse.ui.views.ProblemView"/>
-<view id="org.eclipse.jdt.ui.SourceView"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
-<view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
-<view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
-<fastViewBars/>
+<fastViewBars>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@365c1269" orientation="256" selectedTabId="com.android.ide.eclipse.ddms.views.LogCatView" style="0">
+<fastViews>
+<view id="org.eclipse.jdt.ui.JavadocView" ratio="0.3"/>
+<view id="org.eclipse.ui.views.ProblemView" ratio="0.3"/>
+<view id="org.eclipse.jdt.ui.SourceView" ratio="0.3"/>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.29864255"/>
+<view id="com.android.ide.eclipse.ddms.views.LogCatView" ratio="0.64253396"/>
+<view id="org.eclipse.ui.views.PropertySheet" ratio="0.29864255"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
@@ -292,22 +311,15 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@365c1269" ratio="0.72727275" ratioLeft="480" ratioRight="180" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
-<page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
-<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
-<page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
-<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
-</presentation>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@365c1269" ratio="0.7090909" ratioLeft="468" ratioRight="192" relationship="4" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.jdt.ui.JavadocView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.SourceView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@a4a9ca4" ratio="0.75555557" ratioLeft="476" ratioRight="154" relationship="4" relative="left">
@@ -365,53 +377,76 @@
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.eclipse.debug.ui.VariableView"/>
 <view id="org.eclipse.debug.ui.BreakpointView"/>
-<fastViewBars>&#x0A;<fastViewBar fastViewLocation="131072" id="org.eclipse.debug.internal.ui.OutlineFolderView" orientation="256" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">&#x0A;<fastViews>&#x0A;<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+<fastViewBars>
+<fastViewBar fastViewLocation="131072" id="org.eclipse.debug.internal.ui.OutlineFolderView" orientation="256" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
+<fastViews>
+<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
 </fastViews>
 </fastViewBar>
 </fastViewBars>
-<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.PackageExplorer" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@44d6ac26" ratio="0.75" ratioLeft="972" ratioRight="324" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@44d6ac26" ratio="0.75" ratioLeft="972" ratioRight="324" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="972" ratioRight="324" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="972" ratioRight="324" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.74962294" ratioLeft="497" ratioRight="166" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.74962294" ratioLeft="497" ratioRight="166" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.debug.ui.DisplayView" label="LabelNotFound"/>
 <page content="org.eclipse.search.SearchResultView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@6c94a492" ratio="0.5" ratioLeft="648" ratioRight="648" relationship="2" relative="org.eclipse.debug.internal.ui.ConsoleFolderView">&#x0A;<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@6c94a492" ratio="0.5" ratioLeft="648" ratioRight="648" relationship="2" relative="org.eclipse.debug.internal.ui.ConsoleFolderView">
+<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
+<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 </presentation>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44869214" ratioLeft="223" ratioRight="274" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
-<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.75" ratioLeft="972" ratioRight="324" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder appearance="2" expanded="0">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.75" ratioLeft="972" ratioRight="324" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="648" ratioRight="648" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="648" ratioRight="648" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -424,165 +459,155 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/FindCastsResultsActivity.java"/>
-<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;java.util.concurrent(ThreadPoolExecutor.class"/>
-<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;java.lang(ThreadGroup.class"/>
-<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;org.xml.sax(XMLReader.class"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/rss/RSSHandler.java"/>
-<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;org.xml.sax.helpers(DefaultHandler.class"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/DisplayMessageActivity.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/FindCastsActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/PlayerActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/util/PodcastConstants.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/rss/Item.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/ItemsAdapter.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Podcast_Listener/res/layout/listview_row_item.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/rss/Channel.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Podcast_Listener/src/edu/android/podcast_listener/FindCastsResultsActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Podcast_Listener/res/layout/activity_player.xml"/>
 </editors>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2875" y="0"/>
-</item>
-<item historyLabel="ThreadGroup.class" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<position info="not_deleted" x="3826" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2875" y="0"/>
+<position info="not_deleted" x="3957" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2454" y="0"/>
+<position info="not_deleted" x="4856" y="0"/>
+</item>
+<item historyLabel="Item.java" index="4">
+<position info="not_deleted" x="855" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2351" y="0"/>
+<position info="not_deleted" x="1949" y="0"/>
+</item>
+<item historyLabel="Item.java" index="4">
+<position info="not_deleted" x="316" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2417" y="0"/>
+<position info="not_deleted" x="1949" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2467" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2521" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2553" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2617" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2663" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2708" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2741" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2807" y="0"/>
-</item>
-<item historyLabel="ThreadPoolExecutor.class" index="1">
 <position/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2807" y="0"/>
+<position/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2716" y="0"/>
+<position info="not_deleted" x="4186" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2474" y="0"/>
+<position info="not_deleted" x="3908" y="0"/>
 </item>
-<item historyLabel="XMLReader.class" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="Item.java" index="4">
+<position info="not_deleted" x="316" y="0"/>
 </item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2734" y="0"/>
+<item historyLabel="ItemsAdapter.java" index="5">
+<position info="not_deleted" x="633" y="0"/>
 </item>
-<item historyLabel="RSSHandler.java" index="4">
-<position info="not_deleted" x="1229" y="0"/>
+<item historyLabel="PodcastConstants.java" index="3">
+<position info="not_deleted" x="42" y="0"/>
 </item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2351" y="0"/>
+<item historyLabel="PlayerActivity.java" index="2">
+<position info="not_deleted" x="1586" y="0"/>
 </item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2417" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2467" y="0"/>
+<item historyLabel="FindCastsActivity.java" index="1">
+<position info="not_deleted" x="797" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2521" y="0"/>
+<position info="not_deleted" x="3908" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2553" y="0"/>
+<position info="not_deleted" x="4185" y="0"/>
+</item>
+<item historyLabel="Item.java" index="4">
+<position info="not_deleted" x="351" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2617" y="0"/>
+<position info="not_deleted" x="4185" y="0"/>
+</item>
+<item historyLabel="Item.java" index="4">
+<position info="not_deleted" x="351" y="0"/>
+</item>
+<item historyLabel="ItemsAdapter.java" index="5">
+<position info="not_deleted" x="633" y="0"/>
+</item>
+<item historyLabel="PlayerActivity.java" index="2">
+<position info="not_deleted" x="1586" y="0"/>
+</item>
+<item historyLabel="PodcastConstants.java" index="3">
+<position info="not_deleted" x="42" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2663" y="0"/>
+<position info="not_deleted" x="3586" y="0"/>
+</item>
+<item historyLabel="Channel.java" index="6">
+<position info="not_deleted" x="490" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2708" y="0"/>
+<position info="not_deleted" x="3586" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2741" y="0"/>
+<position info="not_deleted" x="4277" y="0"/>
+</item>
+<item historyLabel="PodcastConstants.java" index="3">
+<position info="not_deleted" x="562" y="0"/>
+</item>
+<item historyLabel="PlayerActivity.java" index="2">
+<position info="not_deleted" x="1586" y="0"/>
+</item>
+<item historyLabel="Item.java" index="4">
+<position info="not_deleted" x="351" y="0"/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2807" y="0"/>
+<position info="not_deleted" x="1952" y="0"/>
 </item>
-<item historyLabel="ThreadPoolExecutor.class" index="1">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="PodcastConstants.java" index="3">
+<position info="not_deleted" x="562" y="0"/>
+</item>
+<item historyLabel="PodcastConstants.java" index="3">
+<position/>
 </item>
 <item historyLabel="FindCastsResultsActivity.java" index="0">
-<position info="not_deleted" x="2807" y="0"/>
+<position info="not_deleted" x="1952" y="0"/>
 </item>
-<item historyLabel="RSSHandler.java" index="4">
-<position info="not_deleted" x="1229" y="0"/>
+<item historyLabel="FindCastsResultsActivity.java" index="0">
+<position info="not_deleted" x="2081" y="0"/>
 </item>
-<item historyLabel="RSSHandler.java" index="4">
-<position info="not_deleted" x="305" y="0"/>
+<item historyLabel="PodcastConstants.java" index="3">
+<position info="not_deleted" x="170" y="91"/>
 </item>
-<item historyLabel="DefaultHandler.class" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="FindCastsResultsActivity.java" index="0">
+<position info="not_deleted" x="2081" y="0"/>
 </item>
-<item historyLabel="RSSHandler.java" index="4">
-<position info="not_deleted" x="305" y="0"/>
+<item historyLabel="PlayerActivity.java" index="2">
+<position info="not_deleted" x="1586" y="0"/>
 </item>
-<item historyLabel="RSSHandler.java" index="4">
-<position info="not_deleted" x="764" y="0"/>
+<item historyLabel="activity_player.xml" index="7"/>
+<item historyLabel="FindCastsResultsActivity.java" index="0">
+<position info="not_deleted" x="2081" y="0"/>
 </item>
-<item historyLabel="DisplayMessageActivity.java" index="6">
-<position info="not_deleted" x="603" y="1"/>
+<item historyLabel="activity_player.xml" index="7"/>
+<item historyLabel="FindCastsResultsActivity.java" index="0">
+<position info="not_deleted" x="2081" y="0"/>
 </item>
-<item historyLabel="RSSHandler.java" index="4">
-<position info="not_deleted" x="972" y="0"/>
+<item historyLabel="PlayerActivity.java" index="2">
+<position/>
 </item>
-<item historyLabel="FindCastsActivity.java" index="7">
-<position info="not_deleted" x="1807" y="0"/>
+<item historyLabel="activity_player.xml" index="7"/>
+<item historyLabel="PlayerActivity.java" index="2">
+<position/>
 </item>
-<item historyLabel="ItemsAdapter.java" index="8">
-<position info="not_deleted" x="1023" y="0"/>
+<item historyLabel="PlayerActivity.java" index="2">
+<position/>
 </item>
-<item historyLabel="listview_row_item.xml" index="9"/>
-<item historyLabel="ItemsAdapter.java" index="8">
-<position info="not_deleted" x="1023" y="0"/>
+<item historyLabel="PlayerActivity.java" index="2">
+<position/>
 </item>
-<item historyLabel="Channel.java" index="10">
-<position info="not_deleted" x="123" y="0"/>
-</item>
-<item historyLabel="RSSHandler.java" index="4">
-<position info="not_deleted" x="972" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="11">
-<position info="not_deleted" x="3179" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="11">
-<position info="not_deleted" x="2942" y="0"/>
-</item>
-<item historyLabel="FindCastsResultsActivity.java" index="11">
-<position info="not_deleted" x="3485" y="0"/>
-</item>
-<item active="true" historyLabel="FindCastsResultsActivity.java" index="11">
-<position info="not_deleted" x="3429" y="0"/>
+<item historyLabel="activity_player.xml" index="7"/>
+<item active="true" historyLabel="PlayerActivity.java" index="2">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -590,6 +615,18 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="org.eclipse.debug.internal.ui.ConsoleFolderView"/>
+<trimItem IMemento.internal.id="left"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@a4a9ca4"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.debug.internal.ui.OutlineFolderView"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
+<trimItem IMemento.internal.id="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@44d6ac26"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@6c94a492"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -597,15 +634,34 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@365c1269"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="DefaultHandler.class" tooltip="org.xml.sax.helpers.DefaultHandler">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;org.xml.sax.helpers(DefaultHandler.class"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayMessageActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/DisplayMessageActivity.java">
+<persistable path="/Podcast_Listener/src/edu/android/podcast_listener/DisplayMessageActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PodcastConstants.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/util/PodcastConstants.java">
+<persistable path="/Podcast_Listener/src/edu/android/podcast_listener/util/PodcastConstants.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PlayerActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/PlayerActivity.java">
+<persistable path="/Podcast_Listener/src/edu/android/podcast_listener/PlayerActivity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_row_item.xml" tooltip="Podcast_Listener/res/layout/listview_row_item.xml">
+<persistable path="/Podcast_Listener/res/layout/listview_row_item.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="R.java" tooltip="Podcast_Listener/gen/edu/android/podcast_listener/R.java">
+<persistable path="/Podcast_Listener/gen/edu/android/podcast_listener/R.java"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="FutureTask.class" tooltip="java.util.concurrent.FutureTask">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;java.util.concurrent(FutureTask.class"/>
 </file>
 <file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ThreadPoolExecutor.class" tooltip="java.util.concurrent.ThreadPoolExecutor">
 <persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;java.util.concurrent(ThreadPoolExecutor.class"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="DefaultHandler.class" tooltip="org.xml.sax.helpers.DefaultHandler">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;org.xml.sax.helpers(DefaultHandler.class"/>
 </file>
 <file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="XMLReader.class" tooltip="org.xml.sax.XMLReader">
 <persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;org.xml.sax(XMLReader.class"/>
@@ -613,32 +669,17 @@
 <file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ThreadGroup.class" tooltip="java.lang.ThreadGroup">
 <persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;java.lang(ThreadGroup.class"/>
 </file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="FutureTask.class" tooltip="java.util.concurrent.FutureTask">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Podcast_Listener/C:\/Users\/Derek\/AppData\/Local\/Android\/android-sdk\/platforms\/android-17\/android.jar&lt;java.util.concurrent(FutureTask.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_row_item.xml" tooltip="Podcast_Listener/res/layout/listview_row_item.xml">
-<persistable path="/Podcast_Listener/res/layout/listview_row_item.xml"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="listview_item_row.xml" tooltip="Podcast_Listener/res/layout/listview_item_row.xml">
 <persistable path="/Podcast_Listener/res/layout/listview_item_row.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ItemsAdapter.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/ItemsAdapter.java">
 <persistable path="/Podcast_Listener/src/edu/android/podcast_listener/ItemsAdapter.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DisplayMessageActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/DisplayMessageActivity.java">
-<persistable path="/Podcast_Listener/src/edu/android/podcast_listener/DisplayMessageActivity.java"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FindCastsActivity.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/FindCastsActivity.java">
 <persistable path="/Podcast_Listener/src/edu/android/podcast_listener/FindCastsActivity.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RSSHandler.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/rss/RSSHandler.java">
 <persistable path="/Podcast_Listener/src/edu/android/podcast_listener/rss/RSSHandler.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Item.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/rss/Item.java">
-<persistable path="/Podcast_Listener/src/edu/android/podcast_listener/rss/Item.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Items.java" tooltip="Podcast_Listener/src/edu/android/podcast_listener/rss/Items.java">
-<persistable path="/Podcast_Listener/src/edu/android/podcast_listener/rss/Items.java"/>
 </file>
 </mruList>
 </workbench>
