@@ -1,0 +1,5 @@
+package edu.android.podcast_listener.util;
+
+public class PodcastConstants {
+	public static final String EXTRA_MESSAGE = "edu.android.podcast_listener.EXTRA_MESSAGE";
+}

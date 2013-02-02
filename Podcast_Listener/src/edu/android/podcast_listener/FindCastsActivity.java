@@ -1,5 +1,6 @@
 package edu.android.podcast_listener;
 
+import edu.android.podcast_listener.util.PodcastConstants;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,8 +11,6 @@ import android.widget.EditText;
 import android.support.v4.app.NavUtils;
 
 public class FindCastsActivity extends Activity {
-	
-	public static final String EXTRA_MESSAGE = "edu.android.podcast_listener.MESSAGE";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +48,7 @@ public class FindCastsActivity extends Activity {
 		Intent intent = new Intent(this, FindCastsResultsActivity.class);
 		EditText text = (EditText) findViewById(R.id.editText1);
 		String podcastUrl = text.getText().toString();
-		intent.putExtra(EXTRA_MESSAGE, podcastUrl);
+		intent.putExtra(PodcastConstants.EXTRA_MESSAGE, podcastUrl);
 		startActivity(intent);
 	}
 

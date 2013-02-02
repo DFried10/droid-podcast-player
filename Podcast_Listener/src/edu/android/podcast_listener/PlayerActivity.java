@@ -2,6 +2,8 @@ package edu.android.podcast_listener;
 
 import java.io.IOException;
 
+import edu.android.podcast_listener.util.PodcastConstants;
+
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
@@ -9,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,8 +21,8 @@ import android.widget.MediaController.MediaPlayerControl;
 import android.support.v4.app.NavUtils;
 
 public class PlayerActivity extends Activity implements MediaPlayerControl, OnPreparedListener {
-	
-	static final String AUDIO_PATH = "http://media.giantbomb.com/podcast/giantbombcast-011513.mp3";
+
+	private String audioUrl;
 	private MediaPlayer mediaPlayer;
 	private MediaController mediaController;
 	private Handler handler = new Handler();
@@ -30,17 +33,19 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 		setContentView(R.layout.activity_player);
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		Intent intent = getIntent();
+		audioUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
 		mediaPlayer = new MediaPlayer();
 		mediaPlayer.setOnPreparedListener(this);
 		mediaController = new MediaController(this);
 		
 		try {
 			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-			mediaPlayer.setDataSource(AUDIO_PATH);
+			mediaPlayer.setDataSource(audioUrl);
 			mediaPlayer.prepare();
 			mediaPlayer.start();
 		} catch (IOException e) {
-			Log.e("Player", "Issue opening url " + AUDIO_PATH);
+			Log.e(PodcastConstants.ERROR_TAG, "Issue opening url " + audioUrl);
 		}
 	}
 

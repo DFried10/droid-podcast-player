@@ -9,6 +9,7 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import edu.android.podcast_listener.util.PodcastConstants;
 
 public class DisplayMessageActivity extends Activity {
 
@@ -23,7 +24,7 @@ public class DisplayMessageActivity extends Activity {
 		}
 		
 		Intent intent = getIntent();
-		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		String message = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
 		
 		TextView text = new TextView(this);
 		text.setTextSize(40);

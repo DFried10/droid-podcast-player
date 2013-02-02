@@ -8,7 +8,8 @@ public class Item implements Serializable {
 	private String title;
 	private String description;
 	private String pubDate;
-	private String guid;
+	private String link;
+	private int size;
 	
 	public Item() {
 		
@@ -38,11 +39,19 @@ public class Item implements Serializable {
 		this.pubDate = pubDate;
 	}
 
-	public String getGuid() {
-		return guid;
+	public String getLink() {
+		return link;
 	}
 
-	public void setGuid(String guid) {
-		this.guid = guid;
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 }
