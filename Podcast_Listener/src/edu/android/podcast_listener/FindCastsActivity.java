@@ -2,12 +2,17 @@ package edu.android.podcast_listener;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.support.v4.app.NavUtils;
 
 public class FindCastsActivity extends Activity {
-
+	
+	public static final String EXTRA_MESSAGE = "edu.android.podcast_listener.MESSAGE";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +43,14 @@ public class FindCastsActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void toResults(View view) {
+		Intent intent = new Intent(this, FindCastsResultsActivity.class);
+		EditText text = (EditText) findViewById(R.id.editText1);
+		String podcastUrl = text.getText().toString();
+		intent.putExtra(EXTRA_MESSAGE, podcastUrl);
+		startActivity(intent);
 	}
 
 }

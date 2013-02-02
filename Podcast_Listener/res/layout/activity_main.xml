@@ -24,25 +24,34 @@
     </EditText> -->
 
     <Button
-        android:id="@+id/findCastsButton"
+        android:id="@+id/testPlayerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/description"
-        android:layout_marginRight="66dp"
-        android:onClick="toFindCasts"
-        android:text="@string/find_button_text"
-        android:textColor="@color/silver" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp"
+        android:onClick="toTestPlayer"
+        android:text="Test Player" />
 
     <Button
         android:id="@+id/myCastsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/description"
-        android:layout_marginLeft="66dp"
+        android:layout_centerHorizontal="true"
         android:onClick="toMyCasts"
         android:text="@string/mycasts_button_text"
+        android:textColor="@color/silver" />
+
+    <Button
+        android:id="@+id/findCastsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myCastsButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:onClick="toFindCasts"
+        android:text="@string/find_button_text"
         android:textColor="@color/silver" />
 
     <TextView
@@ -51,19 +60,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="181dp"
+        android:layout_marginTop="122dp"
         android:gravity="center_horizontal"
         android:text="@string/title_display"
-        android:textSize="40sp"
-        android:textColor="@color/blue" />
-
-    <Button
-        android:id="@+id/testPlayerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/findCastsButton"
-        android:onClick="toTestPlayer"
-        android:text="Test Player" />
+        android:textColor="@color/blue"
+        android:textSize="40sp" />
     
 </RelativeLayout>

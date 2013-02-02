@@ -1,0 +1,64 @@
+package edu.android.podcast_listener.rss;
+
+import java.io.InputStream;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
+import android.sax.*;
+
+public class RSSHandler extends DefaultHandler {
+
+	private Channel channel;
+	private Items items;
+	private Item item;
+	
+	public RSSHandler() {
+		items = new Items();
+	}
+	
+	public Channel parse(InputStream input) {
+		RootElement root = new RootElement("rss");
+		Element channelElement = root.getChild("channel");
+		Element channelTitle = root.getChild("title");
+		Element channelLink = root.getChild("link");
+		Element channelDesc = root.getChild("description");
+		Element channelLanguage = root.getChild("language");
+		
+		Element channelItem = channelElement.getChild("item");
+		Element itemTitle = channelItem.getChild("title");
+		Element itemDesc = channelItem.getChild("description");
+		Element itemLink = channelItem.getChild("link");
+		
+		channelElement.setStartElementListener(new StartElementListener() {
+			public void start(Attributes attrbutes) {
+				channel = new Channel();
+			}
+		});
+		
+		channelTitle.setEndTextElementListener(new EndTextElementListener() {
+            public void end(String body) {
+                channel.setTitle(body);
+            }
+        });
+		
+		channelLink.setEndTextElementListener(new EndTextElementListener() {
+            public void end(String body) {
+                channel.setLink(body);
+            }
+        });
+		
+		channelDesc.setEndTextElementListener(new EndTextElementListener() {
+            public void end(String body) {
+                channel.setDescription(body);
+            }
+        });
+		
+		channelLanguage.setEndTextElementListener(new EndTextElementListener() {
+            public void end(String body) {
+                channel.setLanguage(body);
+            }
+        });
+		
+		return channel;
+	}
+}

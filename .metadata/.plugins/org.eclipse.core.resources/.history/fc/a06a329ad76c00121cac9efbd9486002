@@ -1,0 +1,10 @@
+package edu.android.podcast_listener.rss;
+
+import java.util.ArrayList;
+
+public class Items extends ArrayList<Item> {
+	
+	public Items() {
+		super();
+	}
+}
