@@ -23,13 +23,21 @@ public class RSSHandler extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName,
             Attributes attributes) throws SAXException {
-		
+		if (localName.equalsIgnoreCase("channel")) {
+			
+		} else if (localName.equalsIgnoreCase("item")) {
+			
+		}
 	}
 	
 	@Override
     public void endElement(String uri, String localName, String qName)
             throws SAXException {
+		elementOn = false;
 		
+		if (localName.equalsIgnoreCase("title")) {
+			
+		}
 	}
 	
 	@Override

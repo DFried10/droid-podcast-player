@@ -2,6 +2,7 @@ package edu.android.podcast_listener;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -10,6 +11,11 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
+
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -71,30 +77,36 @@ public class FindCastsResultsActivity extends Activity {
 		@Override
 		protected Channel doInBackground(String... urls) {
 			// TODO Auto-generated method stub
-		try {
-			SAXParserFactory saxFactory = SAXParserFactory.newInstance();
-			SAXParser parser = saxFactory.newSAXParser();
-			XMLReader xmlReader = parser.getXMLReader();
+		try {			
+//			SAXParserFactory saxFactory = SAXParserFactory.newInstance();
+//			SAXParser parser = saxFactory.newSAXParser();
+//			XMLReader xmlReader = parser.getXMLReader();
 			
 			URL url = new URL(urls[0]);
 			InputSource input = new InputSource(url.openStream());
 			
-			RSSHandler rssHandler = new RSSHandler();
-			xmlReader.setContentHandler(rssHandler);
-			xmlReader.parse(input);
+			SyndFeedInput syndPut = new SyndFeedInput();
+			SyndFeed feed = syndPut.build(new XmlReader(url));
+			List entires = feed.getEntries();
 			
-			Channel channelInfo = rssHandler.getParsedChannelData();
+//			RSSHandler rssHandler = new RSSHandler();
+//			xmlReader.setContentHandler(rssHandler);
+//			xmlReader.parse(input);
+			
+//			Channel channelInfo = rssHandler.getParsedChannelData();
 			
 			ListView listView = (ListView) findViewById(R.id.podcastsList);
-			ItemsAdapter items = new ItemsAdapter(getApplicationContext(), R.id.txtTitle, channelInfo.getItems());
-			listView.setAdapter(items);
-			return channelInfo;
-		} catch (ParserConfigurationException e) {
-			Log.e(ERROR_TAG, "Error in the parser config: " + e.getMessage());
-		} catch (SAXException e) {
-			Log.e(ERROR_TAG, "Error in the XML parsing: " + e.getMessage());
+//			ItemsAdapter items = new ItemsAdapter(getApplicationContext(), R.id.txtTitle, channelInfo.getItems());
+			ArrayAdapter adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.activity_find_casts_results, R.id.txtTitle);
+			listView.setAdapter(adapter);
+			
+			return null;
 		} catch (IOException e) {
 			Log.e(ERROR_TAG, "Error in the Input parsing: " + e.getMessage());
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (FeedException e) {
+			e.printStackTrace();
 		}
 			return null;
 		}
