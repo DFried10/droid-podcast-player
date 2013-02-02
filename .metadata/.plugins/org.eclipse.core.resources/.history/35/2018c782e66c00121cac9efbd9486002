@@ -38,7 +38,7 @@ public class FindCastsResultsActivity extends Activity {
 		Intent intent = getIntent();
 		String rssUrl = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 		
-		new RSSAsyncActivity().execute(rssUrl);
+		
 		
 	}
 
