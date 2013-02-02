@@ -18,6 +18,7 @@
     <string name="title_activity_find_casts_results">FoundCasts</string>
     <string name="find_casts_button">Find Podcasts!</string>
     <string name="find_casts_hint">Enter RSS URL for Podcast</string>
+    <string name="player_now_playing">Now Playing:</string>
     <!-- COLORS -->
     <color name="black">#000000</color>
     <color name="silver">#DBDBDB</color>

@@ -2,13 +2,14 @@ package edu.android.podcast_listener;
 
 import java.util.ArrayList;
 
+import edu.android.podcast_listener.rss.Item;
+import edu.android.podcast_listener.rss.Items;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import edu.android.podcast_listener.rss.Item;
 
 public class ItemsAdapter extends ArrayAdapter<Item> {
 	

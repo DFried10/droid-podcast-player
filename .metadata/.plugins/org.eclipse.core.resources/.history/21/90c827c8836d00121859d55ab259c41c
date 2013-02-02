@@ -120,20 +120,15 @@ public class FindCastsResultsActivity extends Activity {
 				while (itr.hasNext()) {
 					SyndEntry entry = (SyndEntry) itr.next();
 					String title = entry.getTitle();
-					List enclosures = null; 
 					String description = entry.getDescription().getValue();
 					String link = entry.getLink();
+					List enclosures = entry.getEnclosures();
 					Date pubDate = entry.getPublishedDate();
 					Item item = new Item();
-					if (entry.getEnclosures() != null) {
-						enclosures = entry.getEnclosures();
-						item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
-						item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
-					} else {
-						item.setLink(link);
-					}
 					item.setTitle(title);
-					item.setDescription(description);					
+					item.setDescription(description);
+					item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
+					item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
 					items.add(item);
 				}
 				channel.setItems(items);

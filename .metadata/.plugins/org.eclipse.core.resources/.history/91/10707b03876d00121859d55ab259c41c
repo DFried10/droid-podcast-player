@@ -12,7 +12,6 @@
         android:textColor="@color/blue"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp" />
-	
 	<TextView android:id="@+id/textDesc"
 	    android:layout_width="fill_parent"
         android:layout_height="fill_parent"
