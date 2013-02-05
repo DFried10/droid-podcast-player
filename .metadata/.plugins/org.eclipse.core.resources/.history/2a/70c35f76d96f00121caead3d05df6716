@@ -133,10 +133,11 @@ public class FindCastsResultsActivity extends Activity {
 				SyndFeed feed = getMostRecentNews(urls[0]);			
 				
 				if (feed != null && checkIfRSSFeed(feed)) {
-					channel = rss20FeedParser(feed);
+					rss20FeedParser(feed);
 				}
 				
 				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
+				progressDialog.dismiss();
 				
 				return channel;
 			} catch (IOException e) {
@@ -148,14 +149,13 @@ public class FindCastsResultsActivity extends Activity {
 		}
 		
 		protected void onPostExecute(Channel channel) {
-			progressDialog.dismiss();
 			try {
-				ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
-				listView.setAdapter(adapter);
-				image = channel.getImage();
-				channelTitle = channel.getTitle();
+			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
+			listView.setAdapter(adapter);
+			image = channel.getImage();
+			channelTitle = channel.getTitle();
 			} catch (NullPointerException e) {
-				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here: " + e.getMessage());
+				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here");
 			}
 		}
 		
@@ -163,7 +163,7 @@ public class FindCastsResultsActivity extends Activity {
 		 * Parses an RSS 2.0 feed, grabbing the title of the channel, the image,
 		 * and all the items contained in the feed.
 		 * @param feed
-		 * @return the <code>Channel</code> object containing all necessary item information
+		 * @return
 		 */
 		private Channel rss20FeedParser(SyndFeed feed) {
 			Channel channel = new Channel();
@@ -190,8 +190,7 @@ public class FindCastsResultsActivity extends Activity {
 					item.setLink(link);
 				}
 				item.setTitle(title);
-//				item.setDescription(stripHTMLMarkupFromDescription(description));
-				item.setDescription(description);
+				item.setDescription(description);					
 				items.add(item);
 			}
 			channel.setItems(items);
@@ -201,11 +200,6 @@ public class FindCastsResultsActivity extends Activity {
 			return channel;
 		}
 		
-		/**
-		 * Parses Atom 1.0 feeds, which have a different XML structure from RSS 2.0
-		 * @param feed
-		 * @return the <code>Channel</code> object containing all necessary item information
-		 */
 		private Channel atomFeedParser(SyndFeed feed) {
 			return null;
 		}
@@ -231,9 +225,6 @@ public class FindCastsResultsActivity extends Activity {
 			return true;
 		}
 		
-		private String stripHTMLMarkupFromDescription(String description) {						
-			return description.replaceAll("(<([^>]+)>)", "");
-		}
 	}
 
 }

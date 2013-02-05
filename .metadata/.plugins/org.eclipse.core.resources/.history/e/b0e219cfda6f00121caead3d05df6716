@@ -133,10 +133,11 @@ public class FindCastsResultsActivity extends Activity {
 				SyndFeed feed = getMostRecentNews(urls[0]);			
 				
 				if (feed != null && checkIfRSSFeed(feed)) {
-					channel = rss20FeedParser(feed);
+					rss20FeedParser(feed);
 				}
 				
 				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
+				progressDialog.dismiss();
 				
 				return channel;
 			} catch (IOException e) {
@@ -148,14 +149,13 @@ public class FindCastsResultsActivity extends Activity {
 		}
 		
 		protected void onPostExecute(Channel channel) {
-			progressDialog.dismiss();
 			try {
-				ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
-				listView.setAdapter(adapter);
-				image = channel.getImage();
-				channelTitle = channel.getTitle();
+			ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
+			listView.setAdapter(adapter);
+			image = channel.getImage();
+			channelTitle = channel.getTitle();
 			} catch (NullPointerException e) {
-				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here: " + e.getMessage());
+				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here");
 			}
 		}
 		
@@ -190,8 +190,7 @@ public class FindCastsResultsActivity extends Activity {
 					item.setLink(link);
 				}
 				item.setTitle(title);
-//				item.setDescription(stripHTMLMarkupFromDescription(description));
-				item.setDescription(description);
+				item.setDescription(description);					
 				items.add(item);
 			}
 			channel.setItems(items);
@@ -232,7 +231,7 @@ public class FindCastsResultsActivity extends Activity {
 		}
 		
 		private String stripHTMLMarkupFromDescription(String description) {						
-			return description.replaceAll("(<([^>]+)>)", "");
+			return description.replaceAll("(<([^>]+)>)", "");;
 		}
 	}
 

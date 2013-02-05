@@ -155,7 +155,7 @@ public class FindCastsResultsActivity extends Activity {
 				image = channel.getImage();
 				channelTitle = channel.getTitle();
 			} catch (NullPointerException e) {
-				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here: " + e.getMessage());
+				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here");
 			}
 		}
 		
@@ -190,8 +190,7 @@ public class FindCastsResultsActivity extends Activity {
 					item.setLink(link);
 				}
 				item.setTitle(title);
-//				item.setDescription(stripHTMLMarkupFromDescription(description));
-				item.setDescription(description);
+				item.setDescription(stripHTMLMarkupFromDescription(description));					
 				items.add(item);
 			}
 			channel.setItems(items);

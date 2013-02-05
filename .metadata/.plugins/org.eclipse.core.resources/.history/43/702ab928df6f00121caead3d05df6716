@@ -25,7 +25,7 @@ public class FindCastsActivity extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
-				if (urlInput.getText() == null || urlInput.getText().equals(""))
+				if (urlInput.getText().equals(""))
 					urlInput.append("http://");
 			}
 		});
