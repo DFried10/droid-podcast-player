@@ -18,6 +18,7 @@
         android:layout_height="fill_parent"
         android:gravity="bottom"
         android:textSize="10sp"
+        android:maxLength="200"
         android:textColor="@color/silver" />
 	
 </LinearLayout>

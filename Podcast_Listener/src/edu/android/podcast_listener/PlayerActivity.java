@@ -5,19 +5,17 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import edu.android.podcast_listener.util.PodcastConstants;
-
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
 import android.widget.TextView;
-import android.support.v4.app.NavUtils;
+import edu.android.podcast_listener.util.PodcastConstants;
 
 public class PlayerActivity extends Activity implements MediaPlayerControl, OnPreparedListener {
 

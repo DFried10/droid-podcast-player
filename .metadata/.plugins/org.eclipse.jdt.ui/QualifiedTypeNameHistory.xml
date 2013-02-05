@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.os.Build"/>
 <fullyQualifiedTypeName name="android.os.Build.VERSION"/>
 <fullyQualifiedTypeName name="android.os.Build.VERSION_CODES"/>
 <fullyQualifiedTypeName name="android.media.MediaPlayer"/>
@@ -32,7 +31,6 @@
 <fullyQualifiedTypeName name="android.view.View"/>
 <fullyQualifiedTypeName name="android.view.LayoutInflater"/>
 <fullyQualifiedTypeName name="android.view.ViewGroup"/>
-<fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.FindCastsActivity"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.FindCastsResultsActivity.RSSAsyncActivity"/>
 <fullyQualifiedTypeName name="com.sun.syndication.io.SyndFeedInput"/>
@@ -40,7 +38,6 @@
 <fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndFeed"/>
 <fullyQualifiedTypeName name="com.sun.syndication.io.XmlReader"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="edu.android.podcast_listener.R.id"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndEntry"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.rss.Item"/>
@@ -57,7 +54,10 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="java.net.MalformedURLException"/>
-<fullyQualifiedTypeName name="edu.android.podcast_listener.util.PodcastConstants"/>
 <fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.PlayerActivity.AsyncImage"/>
+<fullyQualifiedTypeName name="android.app.ProgressDialog"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.R.id"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.util.PodcastConstants"/>
 </qualifiedTypeNameHistroy>

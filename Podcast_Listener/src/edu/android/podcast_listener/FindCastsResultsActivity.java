@@ -2,9 +2,14 @@ package edu.android.podcast_listener;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.jdom.Element;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,12 +25,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.sun.syndication.feed.synd.SyndEnclosure;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
+import com.google.code.rome.android.repackaged.com.sun.syndication.feed.synd.SyndEnclosure;
+import com.google.code.rome.android.repackaged.com.sun.syndication.feed.synd.SyndEntry;
+import com.google.code.rome.android.repackaged.com.sun.syndication.feed.synd.SyndFeed;
+import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FeedFetcher;
+import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FetcherException;
+import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
+import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
+import com.google.code.rome.android.repackaged.com.sun.syndication.io.SyndFeedInput;
+import com.google.code.rome.android.repackaged.com.sun.syndication.io.XmlReader;
 
 import edu.android.podcast_listener.rss.Channel;
 import edu.android.podcast_listener.rss.Item;
@@ -94,6 +102,19 @@ public class FindCastsResultsActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	public SyndFeed getMostRecentNews( final String feedUrl ) {
+        try {
+            return retrieveFeed(feedUrl);
+        } catch (Exception e) {
+            throw new RuntimeException( e );
+        }
+    }
+
+    private SyndFeed retrieveFeed(final String feedUrl) throws IOException, FeedException, FetcherException {
+        FeedFetcher feedFetcher = new HttpURLFeedFetcher();
+        return feedFetcher.retrieveFeed(new URL(feedUrl));
+    }
+	
 	class RSSAsyncActivity extends AsyncTask<String, Void, Channel> {
 		
 		@Override
@@ -105,50 +126,24 @@ public class FindCastsResultsActivity extends Activity {
 		@Override
 		protected Channel doInBackground(String... urls) {
 			try {				
+				Channel channel = null;
 				URL url = new URL(urls[0]);
-				Log.d(PodcastConstants.DEBUG_TAG, "Entered the XML Parsing section: " + url.getPath());
-				SyndFeedInput syndPut = new SyndFeedInput();
-				XmlReader xmlReader = new XmlReader(url);
-				SyndFeed feed = syndPut.build(xmlReader);
-				List entries = feed.getEntries();
-				String imgUrl = feed.getImage().getUrl();
-				String channelTitle = feed.getTitle();
 				
-				Iterator itr = entries.iterator();
-				Channel channel = new Channel();
-				Items items = new Items();
-				while (itr.hasNext()) {
-					SyndEntry entry = (SyndEntry) itr.next();
-					String title = entry.getTitle();
-					List enclosures = null; 
-					String description = entry.getDescription().getValue();
-					String link = entry.getLink();
-					Date pubDate = entry.getPublishedDate();
-					Item item = new Item();
-					if (entry.getEnclosures() != null) {
-						enclosures = entry.getEnclosures();
-						item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
-						item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
-					} else {
-						item.setLink(link);
-					}
-					item.setTitle(title);
-					item.setDescription(description);					
-					items.add(item);
+				Log.d(PodcastConstants.DEBUG_TAG, "Entered the XML Parsing section: " + url.toString());
+				SyndFeed feed = getMostRecentNews(urls[0]);			
+				
+				if (feed != null && checkIfRSSFeed(feed)) {
+					rss20FeedParser(feed);
 				}
-				channel.setItems(items);
-				channel.setImage(imgUrl);
-				channel.setTitle(channelTitle);
 				
 				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
+				progressDialog.dismiss();
 				
 				return channel;
 			} catch (IOException e) {
 				Log.e(PodcastConstants.ERROR_TAG, "Error in the Input parsing: " + e.getMessage());
 			} catch (IllegalArgumentException e) {
 				Log.e(PodcastConstants.ERROR_TAG, "An error occured in the arguments: " + e.getMessage());
-			} catch (FeedException e) {
-				Log.e(PodcastConstants.ERROR_TAG, "An error occured in the feed: " + e.getMessage());
 			}
 			return null;
 		}
@@ -159,10 +154,75 @@ public class FindCastsResultsActivity extends Activity {
 			listView.setAdapter(adapter);
 			image = channel.getImage();
 			channelTitle = channel.getTitle();
-			progressDialog.dismiss();
 			} catch (NullPointerException e) {
 				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here");
 			}
+		}
+		
+		/**
+		 * Parses an RSS 2.0 feed, grabbing the title of the channel, the image,
+		 * and all the items contained in the feed.
+		 * @param feed
+		 * @return
+		 */
+		private Channel rss20FeedParser(SyndFeed feed) {
+			Channel channel = new Channel();
+			Items items = new Items();
+			List entries = feed.getEntries();	
+			
+			// Creates the feed list for the channel
+			String imgUrl = feed.getImage().getUrl();
+			String channelTitle = feed.getTitle();
+			Iterator itr = entries.iterator();
+			while (itr.hasNext()) {
+				SyndEntry entry = (SyndEntry) itr.next();
+				String title = entry.getTitle();
+				List enclosures = null; 
+				String description = entry.getDescription().getValue();
+				String link = entry.getLink();
+				Date pubDate = entry.getPublishedDate();
+				Item item = new Item();
+				if (entry.getEnclosures() != null) {
+					enclosures = entry.getEnclosures();
+					item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
+					item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
+				} else {
+					item.setLink(link);
+				}
+				item.setTitle(title);
+				item.setDescription(description);					
+				items.add(item);
+			}
+			channel.setItems(items);
+			channel.setImage(imgUrl);
+			channel.setTitle(channelTitle);
+			
+			return channel;
+		}
+		
+		private Channel atomFeedParser(SyndFeed feed) {
+			return null;
+		}
+		
+		/**
+		 * The ROME library seems to occasionally return the incorrect
+		 * feed type, so it needs to be double checked, and parsed differently
+		 * if this is the case.
+		 * @param feed
+		 * @return true if an rss feed, false if an atom feed
+		 */
+		private boolean checkIfRSSFeed(SyndFeed feed) {
+			List<Element> markup = (ArrayList<Element>)feed.getForeignMarkup();
+			Pattern pattern = Pattern.compile("\\s*atom10\\s*");
+			
+			for (int i = 0; i < markup.size(); ++i) {
+				Element e = markup.get(i);
+				Matcher matcher = pattern.matcher(e.getNamespace().toString());
+				if (matcher.find()) {
+					return false;
+				}
+			}
+			return true;
 		}
 		
 	}
