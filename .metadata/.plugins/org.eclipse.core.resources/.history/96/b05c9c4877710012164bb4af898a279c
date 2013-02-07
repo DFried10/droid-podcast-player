@@ -1,6 +1,15 @@
 package edu.android.podcast_listener;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.net.URLConnection;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -48,8 +57,23 @@ public class FindCastsActivity extends Activity {
 	
 	public void toResults(View view) {
 		String podcastUrl = urlInput.getText().toString();
-		Intent intent = new Intent(this, FindCastsResultsActivity.class);			
-		intent.putExtra(PodcastConstants.EXTRA_MESSAGE, podcastUrl);
-		startActivity(intent);
+		if (isConnectedToServer(podcastUrl, 1000)) {
+			Intent intent = new Intent(this, FindCastsResultsActivity.class);			
+			intent.putExtra(PodcastConstants.EXTRA_MESSAGE, podcastUrl);
+			startActivity(intent);
+		}		
+	}
+	
+	public boolean isConnectedToServer(String url, int timeout) {
+	    try{
+	        URL myUrl = new URL(url);
+	        URLConnection connection = myUrl.openConnection();
+	        connection.setConnectTimeout(timeout);
+	        connection.connect();
+	        return true;
+	    } catch (Exception e) {
+	        // Handle your exceptions
+	        return false;
+	    }
 	}
 }
