@@ -11,4 +11,7 @@ public class PodcastConstants {
 	public static final String PLAYER_TAG = "PLAYER";
 	public static final String WTF_TAG = "WTF";
 	public static final String AUDIO_PATH = "http://media.giantbomb.com/podcast/giantbombcast-011513.mp3";
+	public static final String ALERT_TITLE = "Podcast not found!";
+	public static final String ALERT_MESSAGE = "The podcast you searched for was not found, check to make sure you entered " +
+			"the correct URL for the podcast.";
 }

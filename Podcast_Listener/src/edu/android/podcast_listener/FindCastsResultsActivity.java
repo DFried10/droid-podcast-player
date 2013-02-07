@@ -12,7 +12,11 @@ import java.util.regex.Pattern;
 import org.jdom.Element;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,8 +36,6 @@ import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FeedF
 import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FetcherException;
 import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
 import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
-import com.google.code.rome.android.repackaged.com.sun.syndication.io.SyndFeedInput;
-import com.google.code.rome.android.repackaged.com.sun.syndication.io.XmlReader;
 
 import edu.android.podcast_listener.rss.Channel;
 import edu.android.podcast_listener.rss.Item;
@@ -106,7 +108,7 @@ public class FindCastsResultsActivity extends Activity {
         try {
             return retrieveFeed(feedUrl);
         } catch (Exception e) {
-            throw new RuntimeException( e );
+        	throw new RuntimeException();
         }
     }
 
@@ -119,7 +121,7 @@ public class FindCastsResultsActivity extends Activity {
 		
 		@Override
 		protected void onPreExecute() {
-			progressDialog = ProgressDialog.show(FindCastsResultsActivity.this,"","Just a second, getting your podcasts...", true,false);
+			progressDialog = ProgressDialog.show(FindCastsResultsActivity.this,"","Just a second, getting your podcast...", true,false);
 			super.onPreExecute();
 		}
 		
@@ -132,32 +134,33 @@ public class FindCastsResultsActivity extends Activity {
 				Log.d(PodcastConstants.DEBUG_TAG, "Entered the XML Parsing section: " + url.toString());
 				SyndFeed feed = getMostRecentNews(urls[0]);			
 				
-				if (feed != null && checkIfRSSFeed(feed)) {
-					channel = rss20FeedParser(feed);
-				} else {
-					channel = atomFeedParser(feed);
+				if (feed != null) {
+					channel = rssFeedParser(feed);
 				}
 				
 				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
+				progressDialog.dismiss();
 				
 				return channel;
 			} catch (IOException e) {
-				Log.e(PodcastConstants.ERROR_TAG, "Error in the Input parsing: " + e.getMessage());
+				Log.e(PodcastConstants.ERROR_TAG, "Error in the Input parsing: " + e.getMessage());	
 			} catch (IllegalArgumentException e) {
 				Log.e(PodcastConstants.ERROR_TAG, "An error occured in the arguments: " + e.getMessage());
-			}
+			} 
 			return null;
 		}
 		
-		protected void onPostExecute(Channel channel) {
+		protected void onPostExecute(Channel channel) {	
 			progressDialog.dismiss();
-			try {
-				ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
-				listView.setAdapter(adapter);
-				image = channel.getImage();
-				channelTitle = channel.getTitle();
-			} catch (NullPointerException e) {
-				Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here: " + e.getMessage());
+			if (channel != null) {
+				try {
+					ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
+					listView.setAdapter(adapter);
+					image = channel.getImage();
+					channelTitle = channel.getTitle();
+				} catch (NullPointerException e) {
+					Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here: " + e.getMessage());
+				}
 			}
 		}
 		
@@ -167,14 +170,16 @@ public class FindCastsResultsActivity extends Activity {
 		 * @param feed
 		 * @return the <code>Channel</code> object containing all necessary item information
 		 */
-		private Channel rss20FeedParser(SyndFeed feed) {
+		private Channel rssFeedParser(SyndFeed feed) {
 			Channel channel = new Channel();
 			Items items = new Items();
 			List entries = feed.getEntries();	
 			
 			// Creates the feed list for the channel
-			String imgUrl = feed.getImage().getUrl();
-			String channelTitle = feed.getTitle();
+			if (feed.getImage() != null) {
+				channel.setImage(feed.getImage().getUrl());
+			}
+			channel.setTitle(feed.getTitle());
 			Iterator itr = entries.iterator();
 			while (itr.hasNext()) {
 				SyndEntry entry = (SyndEntry) itr.next();
@@ -192,54 +197,10 @@ public class FindCastsResultsActivity extends Activity {
 					item.setLink(link);
 				}
 				item.setTitle(title);
-//				item.setDescription(stripHTMLMarkupFromDescription(description));
-				item.setDescription(description);
-				items.add(item);
-			}
-			channel.setItems(items);
-			channel.setImage(imgUrl);
-			channel.setTitle(channelTitle);
-			
-			return channel;
-		}
-		
-		/**
-		 * Parses Atom 1.0 feeds, which have a different XML structure from RSS 2.0
-		 * @param feed
-		 * @return the <code>Channel</code> object containing all necessary item information
-		 */
-		private Channel atomFeedParser(SyndFeed feed) {
-			Channel channel = new Channel();
-			Items items = new Items();
-			List entries = feed.getEntries();
-			List enclosures = null; 
-			
-			// Creates the feed list for the channel
-			if (feed.getImage() != null) {
-				channel.setImage(feed.getImage().getUrl());
-			}
-			String channelTitle = feed.getTitle();
-			Iterator itr = entries.iterator();
-			while (itr.hasNext()) {
-				SyndEntry entry = (SyndEntry) itr.next();
-				String title = entry.getTitle();
-				String description = entry.getDescription().getValue();
-				String link = entry.getLink();
-				Date pubDate = entry.getPublishedDate();
-				Item item = new Item();
-				if (entry.getEnclosures() != null) {
-					enclosures = entry.getEnclosures();
-					item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
-					item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
-				} else {
-					item.setLink(link);
-				}
-				item.setTitle(title);
 				item.setDescription(stripHTMLMarkupFromDescription(description));
 				items.add(item);
 			}
 			channel.setItems(items);
-			channel.setTitle(channelTitle);
 			
 			return channel;
 		}

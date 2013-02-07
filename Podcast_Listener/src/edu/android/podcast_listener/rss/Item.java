@@ -54,4 +54,15 @@ public class Item implements Serializable {
 	public void setSize(long size) {
 		this.size = size;
 	}
+	
+	public String getFormattedDescription() {
+		String formattedDesc = null;
+		if (description.length() > 195) {
+			formattedDesc = description.substring(0, 196);
+			formattedDesc += "...";
+		} else {
+			formattedDesc = description;
+		}
+		return formattedDesc;
+	}
 }

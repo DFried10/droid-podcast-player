@@ -37,7 +37,7 @@ public class ItemsAdapter extends ArrayAdapter<Item> {
                 itemView.setText(String.format("%s%n", item.getTitle()));
             }
             if (itemDesc != null) {
-            	itemDesc.setText(String.format("%s %dMB", item.getDescription(), item.getSize()/1000000));
+            	itemDesc.setText(String.format("%s %dMB", item.getFormattedDescription(), item.getSize()/1000000));
             }
          }
 

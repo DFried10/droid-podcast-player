@@ -1,13 +1,20 @@
 package edu.android.podcast_listener;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import edu.android.podcast_listener.util.PodcastConstants;
 
@@ -21,14 +28,6 @@ public class FindCastsActivity extends Activity {
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		urlInput = (EditText) findViewById(R.id.editText1);
-		urlInput.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				if (urlInput.getText() == null || urlInput.getText().equals(""))
-					urlInput.append("http://");
-			}
-		});
 	}
 
 	@Override
@@ -56,10 +55,10 @@ public class FindCastsActivity extends Activity {
 	}
 	
 	public void toResults(View view) {
-		Intent intent = new Intent(this, FindCastsResultsActivity.class);
 		String podcastUrl = urlInput.getText().toString();
+		Intent intent = new Intent(this, FindCastsResultsActivity.class);			
 		intent.putExtra(PodcastConstants.EXTRA_MESSAGE, podcastUrl);
 		startActivity(intent);
+		
 	}
-
 }
