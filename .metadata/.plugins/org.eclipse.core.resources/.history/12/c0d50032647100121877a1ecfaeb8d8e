@@ -134,8 +134,6 @@ public class FindCastsResultsActivity extends Activity {
 				
 				if (feed != null && checkIfRSSFeed(feed)) {
 					channel = rss20FeedParser(feed);
-				} else {
-					channel = atomFeedParser(feed);
 				}
 				
 				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
@@ -209,39 +207,7 @@ public class FindCastsResultsActivity extends Activity {
 		 * @return the <code>Channel</code> object containing all necessary item information
 		 */
 		private Channel atomFeedParser(SyndFeed feed) {
-			Channel channel = new Channel();
-			Items items = new Items();
-			List entries = feed.getEntries();
-			List enclosures = null; 
-			
-			// Creates the feed list for the channel
-			if (feed.getImage() != null) {
-				channel.setImage(feed.getImage().getUrl());
-			}
-			String channelTitle = feed.getTitle();
-			Iterator itr = entries.iterator();
-			while (itr.hasNext()) {
-				SyndEntry entry = (SyndEntry) itr.next();
-				String title = entry.getTitle();
-				String description = entry.getDescription().getValue();
-				String link = entry.getLink();
-				Date pubDate = entry.getPublishedDate();
-				Item item = new Item();
-				if (entry.getEnclosures() != null) {
-					enclosures = entry.getEnclosures();
-					item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
-					item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
-				} else {
-					item.setLink(link);
-				}
-				item.setTitle(title);
-				item.setDescription(stripHTMLMarkupFromDescription(description));
-				items.add(item);
-			}
-			channel.setItems(items);
-			channel.setTitle(channelTitle);
-			
-			return channel;
+			return null;
 		}
 		
 		/**
