@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Podcast_Listener</string>
+    <string name="app_name">DroidCast</string>
     <string name="hello_podcasters">Hello Podcasters!</string>
     <string name="menu_settings">Settings</string>
+    <!-- Used during initial learning, remove these -->
     <string name="edit_message">Enter a message</string>
     <string name="send_text">Send</string>
     <string name="title_activity_display_message">Message Display</string>

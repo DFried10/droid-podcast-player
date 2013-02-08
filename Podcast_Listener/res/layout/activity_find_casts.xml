@@ -13,8 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
         android:textColor="@color/silver"
-        android:text="@string/find_casts_button"
-        android:onClick="toResults" />
+        android:text="@string/find_casts_button" />
 
     <TextView
         android:id="@+id/searchForCasts"
