@@ -49,7 +49,8 @@ public class MyCastsActivity extends ExpandableListActivity {
 				SimpleExpandableListAdapter adapter = (SimpleExpandableListAdapter) parent.getExpandableListAdapter();
 				Intent intent = new Intent(getApplicationContext(), FindCastsResultsActivity.class);
 				HashMap map = (HashMap)adapter.getChild(groupPosition, childPosition);
-				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, findUrl((String)map.get(MyCastDatabase.NAME)));
+				Podcast pod = (Podcast) map.get("Obj");
+				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, pod.getUrl());
 				startActivity(intent);
 				return true;
 			}
@@ -80,6 +81,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 				if (p.getCategory().equals(cat)) {
 					HashMap child = new HashMap();
 					child.put(MyCastDatabase.NAME, p.getName());
+					child.put("Obj", p);
 					selectList.add(child);
 				}
 			}

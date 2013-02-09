@@ -40,7 +40,7 @@ public class Podcast {
 	
 	@Override
 	public String toString() {
-		return name + ";" + url;
+		return name;
 	}
 	
 }
