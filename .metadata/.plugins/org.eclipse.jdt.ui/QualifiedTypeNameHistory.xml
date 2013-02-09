@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
-<fullyQualifiedTypeName name="android.R.layout"/>
-<fullyQualifiedTypeName name="android.R.id"/>
-<fullyQualifiedTypeName name="edu.android.podcast_listener.rss.Items"/>
-<fullyQualifiedTypeName name="android.view.View"/>
-<fullyQualifiedTypeName name="android.view.ViewGroup"/>
-<fullyQualifiedTypeName name="edu.android.podcast_listener.FindCastsActivity"/>
-<fullyQualifiedTypeName name="edu.android.podcast_listener.FindCastsResultsActivity.RSSAsyncActivity"/>
-<fullyQualifiedTypeName name="com.sun.syndication.io.SyndFeedInput"/>
-<fullyQualifiedTypeName name="org.xml.sax.XMLReader"/>
-<fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndFeed"/>
 <fullyQualifiedTypeName name="com.sun.syndication.io.XmlReader"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="com.sun.syndication.feed.synd.SyndEntry"/>
@@ -45,7 +34,6 @@
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
 <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
-<fullyQualifiedTypeName name="edu.android.podcast_listener.R.id"/>
 <fullyQualifiedTypeName name="edu.android.podcast_listener.R.string"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
@@ -55,9 +43,21 @@
 <fullyQualifiedTypeName name="android.app.ExpandableListActivity"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="android.view.LayoutInflater"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.adapters.ExpandableListAdapter"/>
+<fullyQualifiedTypeName name="android.widget.SimpleExpandableListAdapter"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.R"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.R.layout"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.R.id"/>
+<fullyQualifiedTypeName name="android.widget.ExpandableListView"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.MyCastsActivity"/>
+<fullyQualifiedTypeName name="edu.android.podcast_listener.db.MyCastDatabase"/>
+<fullyQualifiedTypeName name="android.database.sqlite.SQLiteDatabase"/>
+<fullyQualifiedTypeName name="android.database.Cursor"/>
 </qualifiedTypeNameHistroy>

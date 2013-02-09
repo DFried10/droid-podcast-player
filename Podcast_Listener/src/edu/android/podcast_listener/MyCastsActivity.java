@@ -1,12 +1,10 @@
 package edu.android.podcast_listener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import edu.android.podcast_listener.db.MyCastDatabase;
-
 import android.app.ExpandableListActivity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -14,39 +12,63 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
+import edu.android.podcast_listener.db.MyCastDatabase;
+import edu.android.podcast_listener.db.Podcast;
+import edu.android.podcast_listener.db.PodcastDAO;
 
 public class MyCastsActivity extends ExpandableListActivity {
-
+	PodcastDAO podcastDb;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_casts);
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		podcastDb = new PodcastDAO(this);
 		
 		SimpleExpandableListAdapter expAdapter = new SimpleExpandableListAdapter(this,
 				createGroupList(),
 				R.layout.my_casts_group_row,
-				new String[] {"Group Item"}, 
+				new String[] {MyCastDatabase.CATEGORY}, 
 				new int[] {R.id.row_name}, 
 				createChildList(), 
 				R.layout.my_casts_child_row, 
-				new String[] {"Child Item"}, 
+				new String[] {MyCastDatabase.NAME}, 
 				new int[] {R.id.grp_child});
 		setListAdapter(expAdapter);
 	}
 	
 	private List createGroupList() {
-		MyCastDatabase database = new MyCastDatabase(this);
-		SQLiteDatabase sqlDatabase = database.getReadableDatabase();
-		Cursor records = sqlDatabase.rawQuery("", null);
-		
-		return null;
+		podcastDb.open();
+		List results = new ArrayList();
+		List<String> groups = podcastDb.getCategories();
+		for (String g : groups) {
+			HashMap map = new HashMap();
+			map.put(MyCastDatabase.CATEGORY, g);
+			results.add(map);
+		}
+		return results;
 	}
 	
 	private List createChildList() {
+		List catList = new ArrayList();
+		podcastDb.open();
+		List<String> groups = podcastDb.getCategories();
+		List<Podcast> children = podcastDb.getAllPodcasts();
 		
-		return null;
+		for (String cat : groups) {
+			List selectList = new ArrayList();
+			for (Podcast p : children) {
+				if (p.getCategory().equals(cat)) {
+					HashMap child = new HashMap();
+					child.put(MyCastDatabase.NAME, p.getName());
+					selectList.add(child);
+				}
+			}
+			catList.add(selectList);
+		}		
+		return catList;
 	}
 	
 	@Override
