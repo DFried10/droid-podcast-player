@@ -8,10 +8,11 @@
     <TextView android:id="@+id/grp_child"
          android:paddingLeft="50dp"
          android:focusable="false"
-         android:textSize="14sp"
+         android:textSize="20sp"
          android:textColor="@color/black"
-         android:textStyle="normal"
-         android:layout_width="150dp"
-         android:layout_height="wrap_content"/>
+         android:textStyle="normal"         
+         android:gravity="center_vertical"
+         android:layout_width="wrap_content"
+         android:layout_height="70dp"/>
 
 </LinearLayout>

@@ -20,6 +20,8 @@
     <string name="find_casts_button">Find Podcasts!</string>
     <string name="find_casts_hint">Enter RSS URL for Podcast</string>
     <string name="search_casts">Search for your favorite Podcasts</string>
+    <string name="my_casts_title_text">MyCasts</string>
+    <string name="my_casts_desc_text">Search your favorite podcasts and select one to view a list of episodes</string>
     <!-- COLORS -->
     <color name="black">#000000</color>
     <color name="silver">#DBDBDB</color>

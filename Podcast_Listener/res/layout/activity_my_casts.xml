@@ -5,11 +5,38 @@
     android:background="@color/black"
     tools:context=".MyCastsActivity" >
 
+    <TextView
+        android:id="@+id/my_casts_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:textColor="@color/blue"
+        android:text="@string/my_casts_title_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/my_casts_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/my_casts_title"
+        android:textColor="@color/silver"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+       	android:text="@string/my_casts_desc_text" />
+
     <ExpandableListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@id/my_casts_desc"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
+
+    </ExpandableListView>
 
 </RelativeLayout>

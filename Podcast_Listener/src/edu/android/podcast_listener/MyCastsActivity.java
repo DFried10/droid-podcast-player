@@ -5,19 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.ExpandableListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.SimpleExpandableListAdapter;
 import edu.android.podcast_listener.db.MyCastDatabase;
 import edu.android.podcast_listener.db.Podcast;
 import edu.android.podcast_listener.db.PodcastDAO;
+import edu.android.podcast_listener.util.PodcastConstants;
 
 public class MyCastsActivity extends ExpandableListActivity {
 	PodcastDAO podcastDb;
+	ExpandableListView expList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +39,21 @@ public class MyCastsActivity extends ExpandableListActivity {
 				createChildList(), 
 				R.layout.my_casts_child_row, 
 				new String[] {MyCastDatabase.NAME}, 
-				new int[] {R.id.grp_child});
+				new int[] {R.id.grp_child});		
 		setListAdapter(expAdapter);
+		
+		getExpandableListView().setOnChildClickListener(new OnChildClickListener() {
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
+				SimpleExpandableListAdapter adapter = (SimpleExpandableListAdapter) parent.getExpandableListAdapter();
+				Intent intent = new Intent(getApplicationContext(), FindCastsResultsActivity.class);
+				HashMap map = (HashMap)adapter.getChild(groupPosition, childPosition);
+				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, findUrl((String)map.get(MyCastDatabase.NAME)));
+				startActivity(intent);
+				return true;
+			}
+		});
 	}
 	
 	private List createGroupList() {
@@ -69,6 +86,12 @@ public class MyCastsActivity extends ExpandableListActivity {
 			catList.add(selectList);
 		}		
 		return catList;
+	}
+	
+	private String findUrl(String name) {
+		podcastDb.open();
+		String url = podcastDb.getPodcastUrl(name);
+		return url;
 	}
 	
 	@Override

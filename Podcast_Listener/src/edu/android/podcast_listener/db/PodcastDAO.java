@@ -77,6 +77,15 @@ public class PodcastDAO {
 		return categories;
 	}
 	
+	public String getPodcastUrl(String name) {
+		String url;
+		Cursor cursor = database.rawQuery("SELECT URL FROM " + MyCastDatabase.TABLE + " WHERE NAME = '" + name + "'", null);
+		cursor.moveToFirst();
+		url = cursor.getString(0);
+		cursor.close();
+		return url;
+	}
+	
 	public Podcast cursorToPodcast(Cursor cursor) {
 		Podcast podcast = new Podcast();
 		podcast.setId(cursor.getLong(0));
