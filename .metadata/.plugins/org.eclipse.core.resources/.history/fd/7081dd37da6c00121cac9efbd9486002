@@ -1,7 +1,0 @@
-package edu.android.podcast_listener.rss;
-
-import org.xml.sax.helpers.DefaultHandler;
-
-public class RSSHandler extends DefaultHandler {
-
-}

@@ -5,7 +5,10 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -126,13 +129,27 @@ public class FindCastsActivity extends Activity {
 			if (valid) {
 				activity.toResults(activity.urlInput);
 			} else {
-				Log.e(PodcastConstants.DEBUG_TAG, "Can't validate; oh well.");
+				podcastNotFoundDialog();
 			}
 			super.onPostExecute(valid);
 		}
 		
+		void podcastNotFoundDialog() {
+			AlertDialog dialog;
+			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+			builder.setTitle(PodcastConstants.ALERT_TITLE);
+			builder.setMessage(PodcastConstants.ALERT_MESSAGE);
+			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {					
+				public void onClick(DialogInterface dialog, int id) {
+					dialog.dismiss();
+				}
+			});
+			dialog = builder.create();
+			dialog.show();
+		}
+		
 		void attach(FindCastsActivity activity) {
 		      this.activity=activity;
-		    }
+	    }
 	}
 }

@@ -1,7 +1,0 @@
-package edu.android.podcast_listener;
-
-import android.widget.ArrayAdapter;
-
-public class ItemsAdapter extends ArrayAdapter<Items> {
-
-}
