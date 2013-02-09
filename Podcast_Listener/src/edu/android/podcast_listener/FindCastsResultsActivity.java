@@ -37,6 +37,7 @@ import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.Fetch
 import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
 import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
 
+import edu.android.podcast_listener.adapters.ItemsAdapter;
 import edu.android.podcast_listener.rss.Channel;
 import edu.android.podcast_listener.rss.Item;
 import edu.android.podcast_listener.rss.Items;

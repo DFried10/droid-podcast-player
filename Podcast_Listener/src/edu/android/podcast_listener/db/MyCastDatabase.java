@@ -15,15 +15,18 @@ public class MyCastDatabase extends SQLiteOpenHelper {
 	}
 	
 	@Override
-	public void onCreate(SQLiteDatabase arg0) {
-		// TODO Auto-generated method stub
-
+	public void onCreate(SQLiteDatabase db) {
+		db.execSQL("CREATE TABLE PODCAST " +
+				"(PODCAST_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				"PODCAST_NAME TEXT NOT NULL, " +
+				"PODCAST_URL TEXT NOT NULL, " +
+				"PODCAST_IMG TEXT, " +
+				"CATEGORY TEXT)");
 	}
 
 	@Override
-	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
-
+	public void onUpgrade(SQLiteDatabase db, int orig_ver, int new_ver) {
+		db.execSQL("DROP TABLE IF EXISTS PODCAST");
 	}
 
 }

@@ -1,15 +1,17 @@
-package edu.android.podcast_listener;
+package edu.android.podcast_listener.adapters;
 
 import java.util.ArrayList;
 
-import edu.android.podcast_listener.rss.Item;
-import edu.android.podcast_listener.rss.Items;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import edu.android.podcast_listener.R;
+import edu.android.podcast_listener.R.id;
+import edu.android.podcast_listener.R.layout;
+import edu.android.podcast_listener.rss.Item;
 
 public class ItemsAdapter extends ArrayAdapter<Item> {
 	
@@ -33,9 +35,12 @@ public class ItemsAdapter extends ArrayAdapter<Item> {
         if (item!= null) {
             // My layout has only one TextView
             TextView itemView = (TextView) view.findViewById(R.id.txtTitle);
+            TextView itemDesc = (TextView) view.findViewById(R.id.textDesc);
             if (itemView != null) {
-                // do whatever you want with your string and long
-                itemView.setText(String.format("%s : %s : %fMB", item.getTitle(), item.getDescription(), item.getSize()/1000));
+                itemView.setText(String.format("%s%n", item.getTitle()));
+            }
+            if (itemDesc != null) {
+            	itemDesc.setText(String.format("%s %dMB", item.getFormattedDescription(), item.getSize()/1000000));
             }
          }
 

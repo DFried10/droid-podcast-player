@@ -5,6 +5,11 @@
     android:background="@color/black"
     tools:context=".MyCastsActivity" >
 
-    
+    <ExpandableListView
+        android:id="@+id/my_casts_expandable_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
