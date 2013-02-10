@@ -14,7 +14,7 @@
     <string name="mycasts_button_text">My Podcasts</string>
     <string name="find_button_text">Find Podcasts</string>
     <string name="title_activity_my_casts">MyCasts</string>
-    <string name="title_activity_find_casts">FindCasts</string>
+    <string name="title_activity_find_casts">Find Casts</string>
     <string name="title_activity_player">DroidCast Player</string>
     <string name="title_activity_find_casts_results">FoundCasts</string>
     <string name="find_casts_button">Find Podcasts!</string>
@@ -22,6 +22,9 @@
     <string name="search_casts">Search for your favorite Podcasts</string>
     <string name="my_casts_title_text">MyCasts</string>
     <string name="my_casts_desc_text">Search your favorite podcasts and select one to view a list of episodes</string>
+    <string name="episodes_title">Episodes</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="subscribed">Subscribed</string>
     <!-- COLORS -->
     <color name="black">#000000</color>
     <color name="silver">#DBDBDB</color>

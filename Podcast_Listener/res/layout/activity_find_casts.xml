@@ -4,7 +4,30 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".FindCastsActivity" >
-
+	
+    <TextView
+        android:id="@+id/find_casts_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="40sp"
+        android:textColor="@color/blue"
+        android:text="@string/title_activity_find_casts"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/searchForCasts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/find_casts_title"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="@string/search_casts"
+        android:textColor="@color/silver"
+        android:textSize="20sp" />
+    
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -13,19 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
         android:textColor="@color/silver"
-        android:text="@string/find_casts_button" />
-
-    <TextView
-        android:id="@+id/searchForCasts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp"
-        android:gravity="center_horizontal"
-        android:text="@string/search_casts"
-        android:textColor="@color/blue"
-        android:textSize="20sp" />
+        android:text="@string/find_casts_button" />    
 
     <EditText
         android:id="@+id/editText1"

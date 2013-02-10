@@ -5,13 +5,37 @@
     android:background="@color/black"
     tools:context=".FindCastsResultsActivity" >
     
+    <TextView
+        android:id="@+id/results_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/episodes_title"
+        android:textColor="@color/blue"
+        android:textSize="40sp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <ToggleButton 
+        android:id="@+id/subscribe_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/results_title"
+        android:layout_centerHorizontal="true"
+        android:textOn="@string/subscribed"
+        android:textOff="@string/subscribe"
+        android:checked="false"
+        android:textColor="@color/silver"
+        android:onClick="onToggleClicked" />
+    
     <ListView
         android:id="@+id/podcastsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/subscribe_toggle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp" >
     </ListView>
+
 
 </RelativeLayout>

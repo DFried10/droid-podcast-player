@@ -12,11 +12,7 @@ import java.util.regex.Pattern;
 import org.jdom.Element;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +24,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ToggleButton;
 
 import com.google.code.rome.android.repackaged.com.sun.syndication.feed.synd.SyndEnclosure;
 import com.google.code.rome.android.repackaged.com.sun.syndication.feed.synd.SyndEntry;
@@ -48,6 +45,7 @@ public class FindCastsResultsActivity extends Activity {
 	String image;
 	ProgressDialog progressDialog;
 	String channelTitle;
+	ToggleButton toggleButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +58,7 @@ public class FindCastsResultsActivity extends Activity {
 		String rssUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
 		listView = (ListView) findViewById(R.id.podcastsList);
 		progressDialog = new ProgressDialog(this);
+		toggleButton = (ToggleButton) findViewById(R.id.subscribe_toggle);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -81,6 +80,16 @@ public class FindCastsResultsActivity extends Activity {
 		new RSSAsyncActivity().execute(rssUrl);
 	}
 
+	public void onToggleClicked(View view) {
+		boolean on = ((ToggleButton) view).isChecked();
+		
+		if (on) {
+			
+		} else {
+			
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

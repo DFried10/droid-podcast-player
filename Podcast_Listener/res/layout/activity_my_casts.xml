@@ -13,6 +13,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="40sp"
         android:textColor="@color/blue"
+        android:layout_marginTop="30dp"
         android:text="@string/my_casts_title_text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
