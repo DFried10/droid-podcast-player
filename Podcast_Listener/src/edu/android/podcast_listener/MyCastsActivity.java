@@ -66,6 +66,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 			map.put(MyCastDatabase.CATEGORY, g);
 			results.add(map);
 		}
+		podcastDb.close();
 		return results;
 	}
 	
@@ -87,13 +88,8 @@ public class MyCastsActivity extends ExpandableListActivity {
 			}
 			catList.add(selectList);
 		}		
+		podcastDb.close();
 		return catList;
-	}
-	
-	private String findUrl(String name) {
-		podcastDb.open();
-		String url = podcastDb.getPodcastUrl(name);
-		return url;
 	}
 	
 	@Override
