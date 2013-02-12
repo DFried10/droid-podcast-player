@@ -86,15 +86,15 @@ public class FindCastsResultsActivity extends Activity {
 		boolean on = ((ToggleButton) view).isChecked();
 		
 		if (on) {
-			
+//			podDB.unsubscribeFromPodcast(podcast);
 		} else {
-			
+//			podDB.subscribeToPodcast(name, rssUrl, image, category);
 		}
 	}
 	
 	private void checkIfSub(String rssUrl) {
 		podDB.open();
-		if (podDB.subscribedToPodcast(rssUrl)) {
+		if (podDB.isSubscribedToPodcast(rssUrl)) {
 			toggleButton.setChecked(true);
 		} else {
 			toggleButton.setChecked(false);

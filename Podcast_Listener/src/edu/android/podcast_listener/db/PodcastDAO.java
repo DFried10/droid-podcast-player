@@ -11,7 +11,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 public class PodcastDAO {
-
+	
+	private static final String DIV = ", ";
 	private SQLiteDatabase database;
 	private MyCastDatabase myCastDatabase;
 	private String[] allColumns = {MyCastDatabase.ID, MyCastDatabase.NAME, MyCastDatabase.URL,
@@ -29,12 +30,13 @@ public class PodcastDAO {
 		database.close();
 	}
 	
-	public Podcast createPodcast(String url, String name, String img, String category) {
+	private Podcast createPodcast(String url, String name, String img, String category) {
 		ContentValues values = new ContentValues();
 		values.put(MyCastDatabase.NAME, name);
 		values.put(MyCastDatabase.URL, url);
 		values.put(MyCastDatabase.IMAGE, img);
 		values.put(MyCastDatabase.CATEGORY, category);
+		values.put(MyCastDatabase.SUBSCRIBED, 1);
 		
 		long insertId = database.insert(MyCastDatabase.TABLE, null, values);
 		Cursor cursor = database.query(MyCastDatabase.TABLE, allColumns, MyCastDatabase.ID + " = " + insertId, null, 
@@ -45,7 +47,7 @@ public class PodcastDAO {
 		return podcast;
 	}
 	
-	public void deletePodcast(Podcast podcast) {
+	private void deletePodcast(Podcast podcast) {
 		long id = podcast.getId();
 		database.delete(MyCastDatabase.TABLE, MyCastDatabase.ID+" = "+id, null);
 	}
@@ -87,13 +89,20 @@ public class PodcastDAO {
 		return url;
 	}
 	
-	public boolean subscribedToPodcast(String rssUrl) {
-		boolean isSub = false;
+	public boolean isSubscribedToPodcast(String rssUrl) {
 		int num = (int) DatabaseUtils.queryNumEntries(database, MyCastDatabase.TABLE, MyCastDatabase.URL + "=?", new String[] {rssUrl});
 		if (num == 0) {
 			return false;
 		}
 		return true;
+	}
+	
+	public void subscribeToPodcast(String name, String rssUrl, String image, String category) {
+		createPodcast(rssUrl, name, image, category);
+	}
+	
+	public void unsubscribeFromPodcast(Podcast podcast) {
+		deletePodcast(podcast);
 	}
 	
 	public Podcast cursorToPodcast(Cursor cursor) {
