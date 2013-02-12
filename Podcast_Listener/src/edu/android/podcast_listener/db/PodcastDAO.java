@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -84,6 +85,15 @@ public class PodcastDAO {
 		url = cursor.getString(0);
 		cursor.close();
 		return url;
+	}
+	
+	public boolean subscribedToPodcast(String rssUrl) {
+		boolean isSub = false;
+		int num = (int) DatabaseUtils.queryNumEntries(database, MyCastDatabase.TABLE, MyCastDatabase.URL + "=?", new String[] {rssUrl});
+		if (num == 0) {
+			return false;
+		}
+		return true;
 	}
 	
 	public Podcast cursorToPodcast(Cursor cursor) {

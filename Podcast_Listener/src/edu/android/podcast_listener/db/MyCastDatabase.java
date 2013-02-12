@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyCastDatabase extends SQLiteOpenHelper {
-	final static int DB_VERSION = 1;
+	final static int DB_VERSION = 2;
 	final static String DB_NAME = "MyCast";
 	public final static String TABLE = "PODCAST";
 	public final static String ID = "ID";
@@ -13,7 +13,7 @@ public class MyCastDatabase extends SQLiteOpenHelper {
 	public final static String URL = "URL";
 	public final static String IMAGE = "IMAGE";
 	public final static String CATEGORY = "CATEGORY";
-	public final static String SUBCRIBED = "SUBSCRIBED";
+	public final static String SUBSCRIBED = "SUBSCRIBED";
 	
 	Context context;
 	
@@ -29,14 +29,16 @@ public class MyCastDatabase extends SQLiteOpenHelper {
 				NAME + " TEXT NOT NULL, " +
 				URL + " TEXT NOT NULL, " +
 				IMAGE + " TEXT, " +
-				CATEGORY + " TEXT)");
-		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY) VALUES ('Giantbomb', 'http://www.giantbomb.com/podcast-xml/', null, 'Entertainment')");
-		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY) VALUES ('This American Life', 'http://feeds.thisamericanlife.org/talpodcast', null, 'News')");
+				CATEGORY + " TEXT, " +
+				SUBSCRIBED + " INTEGER)");
+		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('Giantbomb', 'http://www.giantbomb.com/podcast-xml/', null, 'Entertainment', 1)");
+		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('This American Life', 'http://feeds.thisamericanlife.org/talpodcast', null, 'News', 1)");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int orig_ver, int new_ver) {
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE);
+		if (orig_ver != new_ver) 
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE);
 	}
 
 }

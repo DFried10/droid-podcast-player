@@ -35,6 +35,7 @@ import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.impl.
 import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
 
 import edu.android.podcast_listener.adapters.ItemsAdapter;
+import edu.android.podcast_listener.db.PodcastDAO;
 import edu.android.podcast_listener.rss.Channel;
 import edu.android.podcast_listener.rss.Item;
 import edu.android.podcast_listener.rss.Items;
@@ -46,6 +47,7 @@ public class FindCastsResultsActivity extends Activity {
 	ProgressDialog progressDialog;
 	String channelTitle;
 	ToggleButton toggleButton;
+	PodcastDAO podDB;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +55,16 @@ public class FindCastsResultsActivity extends Activity {
 		setContentView(R.layout.activity_find_casts_results);
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		podDB = new PodcastDAO(this);
 		
 		Intent intent = getIntent();
 		String rssUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
 		listView = (ListView) findViewById(R.id.podcastsList);
 		progressDialog = new ProgressDialog(this);
 		toggleButton = (ToggleButton) findViewById(R.id.subscribe_toggle);
+		checkIfSub(rssUrl);
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
@@ -73,8 +76,7 @@ public class FindCastsResultsActivity extends Activity {
 				intent.putExtra(PodcastConstants.EPISODE_MESSAGE, listItem.getTitle());
 				intent.putExtra(PodcastConstants.EPISODE_DESC, listItem.getDescription());
 				startActivity(intent);
-			}
-					
+			}					
 		});
 		
 		new RSSAsyncActivity().execute(rssUrl);
@@ -88,6 +90,16 @@ public class FindCastsResultsActivity extends Activity {
 		} else {
 			
 		}
+	}
+	
+	private void checkIfSub(String rssUrl) {
+		podDB.open();
+		if (podDB.subscribedToPodcast(rssUrl)) {
+			toggleButton.setChecked(true);
+		} else {
+			toggleButton.setChecked(false);
+		}
+		podDB.close();
 	}
 	
 	@Override
