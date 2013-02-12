@@ -13,6 +13,7 @@ public class MyCastDatabase extends SQLiteOpenHelper {
 	public final static String URL = "URL";
 	public final static String IMAGE = "IMAGE";
 	public final static String CATEGORY = "CATEGORY";
+	public final static String SUBCRIBED = "SUBSCRIBED";
 	
 	Context context;
 	
