@@ -48,6 +48,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 					int groupPosition, int childPosition, long id) {
 				SimpleExpandableListAdapter adapter = (SimpleExpandableListAdapter) parent.getExpandableListAdapter();
 				Intent intent = new Intent(getApplicationContext(), FindCastsResultsActivity.class);
+				Bundle bundle = new Bundle();
 				HashMap map = (HashMap)adapter.getChild(groupPosition, childPosition);
 				Podcast pod = (Podcast) map.get("Obj");
 				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, pod.getUrl());

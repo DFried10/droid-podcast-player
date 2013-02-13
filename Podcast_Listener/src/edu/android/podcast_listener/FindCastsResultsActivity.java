@@ -35,6 +35,7 @@ import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.impl.
 import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
 
 import edu.android.podcast_listener.adapters.ItemsAdapter;
+import edu.android.podcast_listener.db.Podcast;
 import edu.android.podcast_listener.db.PodcastDAO;
 import edu.android.podcast_listener.rss.Channel;
 import edu.android.podcast_listener.rss.Item;
@@ -44,10 +45,12 @@ import edu.android.podcast_listener.util.PodcastConstants;
 public class FindCastsResultsActivity extends Activity {
 	ListView listView;
 	String image;
+	String rssUrl;
 	ProgressDialog progressDialog;
 	String channelTitle;
 	ToggleButton toggleButton;
 	PodcastDAO podDB;
+	Channel channelInfo;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +58,8 @@ public class FindCastsResultsActivity extends Activity {
 		setContentView(R.layout.activity_find_casts_results);
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		podDB = new PodcastDAO(this);
 		
-		Intent intent = getIntent();
-		String rssUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
-		listView = (ListView) findViewById(R.id.podcastsList);
-		progressDialog = new ProgressDialog(this);
-		toggleButton = (ToggleButton) findViewById(R.id.subscribe_toggle);
-		checkIfSub(rssUrl);
+		prepareActivityFields();
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -88,7 +85,7 @@ public class FindCastsResultsActivity extends Activity {
 		if (on) {
 //			podDB.unsubscribeFromPodcast(podcast);
 		} else {
-//			podDB.subscribeToPodcast(name, rssUrl, image, category);
+//			podDB.subscribeToPodcast(podcast.getName(), podcast.getUrl(), podcast.getImg(), "Entertainment");
 		}
 	}
 	
@@ -100,6 +97,16 @@ public class FindCastsResultsActivity extends Activity {
 			toggleButton.setChecked(false);
 		}
 		podDB.close();
+	}
+	
+	private void prepareActivityFields() {
+		podDB = new PodcastDAO(this);		
+		Intent intent = getIntent();
+		rssUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
+		listView = (ListView) findViewById(R.id.podcastsList);
+		progressDialog = new ProgressDialog(this);
+		toggleButton = (ToggleButton) findViewById(R.id.subscribe_toggle);
+		checkIfSub(rssUrl);
 	}
 	
 	@Override
@@ -175,6 +182,7 @@ public class FindCastsResultsActivity extends Activity {
 		protected void onPostExecute(Channel channel) {	
 			progressDialog.dismiss();
 			if (channel != null) {
+				channelInfo = channel;
 				try {
 					ItemsAdapter adapter = new ItemsAdapter(getApplicationContext(), R.layout.listview_row_item, channel.getItems());
 					listView.setAdapter(adapter);
@@ -211,6 +219,7 @@ public class FindCastsResultsActivity extends Activity {
 				String link = entry.getLink();
 				Date pubDate = entry.getPublishedDate();
 				Item item = new Item();
+				item.setPubDate(pubDate.toString());
 				if (entry.getEnclosures() != null) {
 					enclosures = entry.getEnclosures();
 					item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
