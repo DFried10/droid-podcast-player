@@ -33,9 +33,11 @@ import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FeedF
 import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FetcherException;
 import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
 import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
+import com.google.code.rome.android.repackaged.com.sun.syndication.io.SyndFeedInput;
+import com.google.code.rome.android.repackaged.com.sun.syndication.io.XmlReader;
+import com.google.code.rome.android.repackaged.com.sun.syndication.io.impl.Atom10Parser;
 
 import edu.android.podcast_listener.adapters.ItemsAdapter;
-import edu.android.podcast_listener.db.Podcast;
 import edu.android.podcast_listener.db.PodcastDAO;
 import edu.android.podcast_listener.rss.Channel;
 import edu.android.podcast_listener.rss.Item;
@@ -137,8 +139,9 @@ public class FindCastsResultsActivity extends Activity {
         try {
             return retrieveFeed(feedUrl);
         } catch (Exception e) {
-        	throw new RuntimeException();
+        	Log.e(PodcastConstants.ERROR_TAG, "An issue occured while getting the feed: " + e.getMessage());
         }
+		return null;
     }
 
     private SyndFeed retrieveFeed(final String feedUrl) throws IOException, FeedException, FetcherException {
@@ -161,7 +164,7 @@ public class FindCastsResultsActivity extends Activity {
 				URL url = new URL(urls[0]);
 				
 				Log.d(PodcastConstants.DEBUG_TAG, "Entered the XML Parsing section: " + url.toString());
-				SyndFeed feed = getMostRecentNews(urls[0]);			
+				SyndFeed feed = getMostRecentNews(urls[0]);					
 				
 				if (feed != null) {
 					channel = rssFeedParser(feed);
@@ -220,7 +223,7 @@ public class FindCastsResultsActivity extends Activity {
 				Date pubDate = entry.getPublishedDate();
 				Item item = new Item();
 				item.setPubDate(pubDate.toString());
-				if (entry.getEnclosures() != null) {
+				if (entry.getEnclosures() != null && entry.getEnclosures().size() > 0) {
 					enclosures = entry.getEnclosures();
 					item.setLink(((SyndEnclosure)enclosures.get(0)).getUrl());
 					item.setSize(((SyndEnclosure)enclosures.get(0)).getLength());
