@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyCastDatabase extends SQLiteOpenHelper {
-	final static int DB_VERSION = 3;
+	final static int DB_VERSION = 4;
 	final static String DB_NAME = "MyCast";
 	public final static String TABLE = "PODCAST";
 	public final static String ID = "ID";
@@ -31,8 +31,8 @@ public class MyCastDatabase extends SQLiteOpenHelper {
 				IMAGE + " TEXT, " +
 				CATEGORY + " TEXT, " +
 				SUBSCRIBED + " INTEGER)");
-		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('Comedy Bang Bang', 'http://feeds.feedburner.com/comedydeathrayradio', null, 'Entertainment', 1)");
-		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('This American Life', 'http://feeds.thisamericanlife.org/talpodcast', null, 'News', 1)");
+//		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('Comedy Bang Bang', 'http://feeds.feedburner.com/comedydeathrayradio', null, 'Entertainment', 1)");
+//		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('This American Life', 'http://feeds.thisamericanlife.org/talpodcast', null, 'News', 1)");
 	}
 
 	@Override

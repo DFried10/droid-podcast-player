@@ -47,9 +47,8 @@ public class PodcastDAO {
 		return podcast;
 	}
 	
-	private void deletePodcast(Podcast podcast) {
-		long id = podcast.getId();
-		database.delete(MyCastDatabase.TABLE, MyCastDatabase.ID+" = "+id, null);
+	private void deletePodcast(String rssUrl) {
+		database.delete(MyCastDatabase.TABLE, MyCastDatabase.URL + "=?", new String[] {rssUrl});
 	}
 	
 	public List<Podcast> getAllPodcasts() {
@@ -101,8 +100,8 @@ public class PodcastDAO {
 		createPodcast(rssUrl, name, image, category);
 	}
 	
-	public void unsubscribeFromPodcast(Podcast podcast) {
-		deletePodcast(podcast);
+	public void unsubscribeFromPodcast(String rssUrl) {
+		deletePodcast(rssUrl);
 	}
 	
 	public Podcast cursorToPodcast(Cursor cursor) {
