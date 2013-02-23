@@ -31,16 +31,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		podcastDb = new PodcastDAO(this);
 		
-		SimpleExpandableListAdapter expAdapter = new SimpleExpandableListAdapter(this,
-				createGroupList(),
-				R.layout.my_casts_group_row,
-				new String[] {MyCastDatabase.CATEGORY}, 
-				new int[] {R.id.row_name}, 
-				createChildList(), 
-				R.layout.my_casts_child_row, 
-				new String[] {MyCastDatabase.NAME}, 
-				new int[] {R.id.grp_child});		
-		setListAdapter(expAdapter);
+		setListAdapter(configListAdapter());
 		
 		getExpandableListView().setOnChildClickListener(new OnChildClickListener() {
 			@Override
@@ -60,19 +51,22 @@ public class MyCastsActivity extends ExpandableListActivity {
 	
 	@Override
 	protected void onResume() {
-		super.onResume();
-		
-		// Refresh the list
+		super.onResume();		
+		// Refresh the list		
+		setListAdapter(configListAdapter());
+	}
+	
+	private SimpleExpandableListAdapter configListAdapter() {
 		SimpleExpandableListAdapter expAdapter = new SimpleExpandableListAdapter(this,
 				createGroupList(),
 				R.layout.my_casts_group_row,
-				new String[] {MyCastDatabase.CATEGORY}, 
+				new String[] {PodcastConstants.CATEGORY}, 
 				new int[] {R.id.row_name}, 
 				createChildList(), 
 				R.layout.my_casts_child_row, 
-				new String[] {MyCastDatabase.NAME}, 
-				new int[] {R.id.grp_child});		
-		setListAdapter(expAdapter);
+				new String[] {PodcastConstants.NAME}, 
+				new int[] {R.id.grp_child});
+		return expAdapter;
 	}
 	
 	private List createGroupList() {
@@ -81,7 +75,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 		List<String> groups = podcastDb.getCategories();
 		for (String g : groups) {
 			HashMap map = new HashMap();
-			map.put(MyCastDatabase.CATEGORY, g);
+			map.put(PodcastConstants.CATEGORY, g);
 			results.add(map);
 		}
 		podcastDb.close();
@@ -99,7 +93,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 			for (Podcast p : children) {
 				if (p.getCategory().equals(cat)) {
 					HashMap child = new HashMap();
-					child.put(MyCastDatabase.NAME, p.getName());
+					child.put(PodcastConstants.NAME, p.getName());
 					child.put("Obj", p);
 					selectList.add(child);
 				}

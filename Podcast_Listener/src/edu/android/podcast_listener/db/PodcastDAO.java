@@ -3,6 +3,8 @@ package edu.android.podcast_listener.db;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.android.podcast_listener.util.PodcastConstants;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,8 +17,8 @@ public class PodcastDAO {
 	private static final String DIV = ", ";
 	private SQLiteDatabase database;
 	private MyCastDatabase myCastDatabase;
-	private String[] allColumns = {MyCastDatabase.ID, MyCastDatabase.NAME, MyCastDatabase.URL,
-			MyCastDatabase.IMAGE, MyCastDatabase.CATEGORY};
+	private String[] allColumns = {PodcastConstants.ID, PodcastConstants.NAME, PodcastConstants.URL,
+			PodcastConstants.IMAGE, PodcastConstants.CATEGORY};
 	
 	public PodcastDAO(Context context) {
 		myCastDatabase = new MyCastDatabase(context);
@@ -32,14 +34,14 @@ public class PodcastDAO {
 	
 	private Podcast createPodcast(String url, String name, String img, String category) {
 		ContentValues values = new ContentValues();
-		values.put(MyCastDatabase.NAME, name);
-		values.put(MyCastDatabase.URL, url);
-		values.put(MyCastDatabase.IMAGE, img);
-		values.put(MyCastDatabase.CATEGORY, category);
-		values.put(MyCastDatabase.SUBSCRIBED, 1);
+		values.put(PodcastConstants.NAME, name);
+		values.put(PodcastConstants.URL, url);
+		values.put(PodcastConstants.IMAGE, img);
+		values.put(PodcastConstants.CATEGORY, category);
+		values.put(PodcastConstants.SUBSCRIBED, 1);
 		
-		long insertId = database.insert(MyCastDatabase.TABLE, null, values);
-		Cursor cursor = database.query(MyCastDatabase.TABLE, allColumns, MyCastDatabase.ID + " = " + insertId, null, 
+		long insertId = database.insert(PodcastConstants.TABLE, null, values);
+		Cursor cursor = database.query(PodcastConstants.TABLE, allColumns, PodcastConstants.ID + " = " + insertId, null, 
 				null, null, null);
 		cursor.moveToFirst();
 		Podcast podcast = cursorToPodcast(cursor);
@@ -48,12 +50,12 @@ public class PodcastDAO {
 	}
 	
 	private void deletePodcast(String rssUrl) {
-		database.delete(MyCastDatabase.TABLE, MyCastDatabase.URL + "=?", new String[] {rssUrl});
+		database.delete(PodcastConstants.TABLE, PodcastConstants.URL + "=?", new String[] {rssUrl});
 	}
 	
 	public List<Podcast> getAllPodcasts() {
 		List<Podcast> podcasts = new ArrayList<Podcast>();
-		Cursor cursor = database.query(MyCastDatabase.TABLE, allColumns, null, null, null, null, null);
+		Cursor cursor = database.query(PodcastConstants.TABLE, allColumns, null, null, null, null, null);
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
@@ -67,7 +69,7 @@ public class PodcastDAO {
 
 	public List<String> getCategories() {
 		List<String> categories = new ArrayList<String>();
-		Cursor cursor = database.rawQuery("SELECT DISTINCT CATEGORY FROM " + MyCastDatabase.TABLE, null);
+		Cursor cursor = database.rawQuery("SELECT DISTINCT CATEGORY FROM " + PodcastConstants.TABLE, null);
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
@@ -81,7 +83,7 @@ public class PodcastDAO {
 	
 	public String getPodcastUrl(String name) {
 		String url;
-		Cursor cursor = database.rawQuery("SELECT URL FROM " + MyCastDatabase.TABLE + " WHERE NAME = '" + name + "'", null);
+		Cursor cursor = database.rawQuery("SELECT URL FROM " + PodcastConstants.TABLE + " WHERE NAME = '" + name + "'", null);
 		cursor.moveToFirst();
 		url = cursor.getString(0);
 		cursor.close();
@@ -89,7 +91,7 @@ public class PodcastDAO {
 	}
 	
 	public boolean isSubscribedToPodcast(String rssUrl) {
-		int num = (int) DatabaseUtils.queryNumEntries(database, MyCastDatabase.TABLE, MyCastDatabase.URL + "=?", new String[] {rssUrl});
+		int num = (int) DatabaseUtils.queryNumEntries(database, PodcastConstants.TABLE, PodcastConstants.URL + "=?", new String[] {rssUrl});
 		if (num == 0) {
 			return false;
 		}
