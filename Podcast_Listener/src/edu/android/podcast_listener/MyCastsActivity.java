@@ -58,6 +58,23 @@ public class MyCastsActivity extends ExpandableListActivity {
 		});
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		// Refresh the list
+		SimpleExpandableListAdapter expAdapter = new SimpleExpandableListAdapter(this,
+				createGroupList(),
+				R.layout.my_casts_group_row,
+				new String[] {MyCastDatabase.CATEGORY}, 
+				new int[] {R.id.row_name}, 
+				createChildList(), 
+				R.layout.my_casts_child_row, 
+				new String[] {MyCastDatabase.NAME}, 
+				new int[] {R.id.grp_child});		
+		setListAdapter(expAdapter);
+	}
+	
 	private List createGroupList() {
 		podcastDb.open();
 		List results = new ArrayList();

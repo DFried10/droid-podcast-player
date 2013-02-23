@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyCastDatabase extends SQLiteOpenHelper {
-	final static int DB_VERSION = 4;
+	final static int DB_VERSION = 5;
 	final static String DB_NAME = "MyCast";
 	public final static String TABLE = "PODCAST";
 	public final static String ID = "ID";

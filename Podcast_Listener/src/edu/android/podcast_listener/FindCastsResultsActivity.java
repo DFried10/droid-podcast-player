@@ -85,9 +85,9 @@ public class FindCastsResultsActivity extends Activity {
 		boolean on = ((ToggleButton) view).isChecked();
 		podDB.open();
 		if (on) {
-			podDB.unsubscribeFromPodcast(rssUrl);
-		} else {
 			podDB.subscribeToPodcast(channelInfo.getTitle(), rssUrl, channelInfo.getImage(), "Entertainment");
+		} else {
+			podDB.unsubscribeFromPodcast(rssUrl);
 		}
 		podDB.close();
 	}
