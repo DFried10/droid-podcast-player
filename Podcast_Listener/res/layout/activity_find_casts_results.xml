@@ -16,17 +16,18 @@
         android:textSize="40sp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
-    <ToggleButton 
+    <ToggleButton
         android:id="@+id/subscribe_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/results_title"
-        android:layout_centerHorizontal="true"
-        android:textOn="@string/subscribed"
-        android:textOff="@string/subscribe"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/results_title"
+        android:layout_marginRight="70dp"
         android:checked="false"
+        android:onClick="onToggleClicked"
         android:textColor="@color/silver"
-        android:onClick="onToggleClicked" />
+        android:textOff="@string/subscribe"
+        android:textOn="@string/subscribed" />
     
     <ListView
         android:id="@+id/podcastsList"
@@ -37,5 +38,17 @@
         android:layout_marginTop="14dp" >
     </ListView>
 
+    <Button
+        android:id="@+id/set_category_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/results_title"
+        android:layout_toLeftOf="@id/subscribe_toggle"
+        android:onClick="onSetCategoryClicked"
+        android:text="@string/category_text"
+        android:textColor="@color/silver"
+        android:textSize="14sp" />
+
+    
 
 </RelativeLayout>

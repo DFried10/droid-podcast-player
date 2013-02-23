@@ -8,7 +8,7 @@ import edu.android.podcast_listener.util.PodcastConstants;
 import edu.android.podcast_listener.util.PodcastSQL;
 
 public class MyCastDatabase extends SQLiteOpenHelper {
-	final static int DB_VERSION = 5;
+	final static int DB_VERSION = 9;
 	final static String DB_NAME = "MyCast";
 	
 	Context context;
@@ -22,6 +22,9 @@ public class MyCastDatabase extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(PodcastSQL.CREATE_PODCAST_TABLE.toString());
 		db.execSQL(PodcastSQL.CREATE_CATEGORY_TABLE.toString());
+		db.execSQL(PodcastSQL.INSERT_CAT_ENTERTAINMENT.toString());
+		db.execSQL(PodcastSQL.INSERT_CAT_NEWS.toString());
+		db.execSQL(PodcastSQL.INSERT_CAT_COMEDY.toString());
 //		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('Comedy Bang Bang', 'http://feeds.feedburner.com/comedydeathrayradio', null, 'Entertainment', 1)");
 //		db.execSQL("INSERT INTO PODCAST (NAME, URL, IMAGE, CATEGORY, SUBSCRIBED) VALUES ('This American Life', 'http://feeds.thisamericanlife.org/talpodcast', null, 'News', 1)");
 	}

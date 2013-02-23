@@ -11,9 +11,9 @@ public enum PodcastSQL {
 	CREATE_CATEGORY_TABLE("CREATE TABLE " + PodcastConstants.CAT_TABLE + 
 			" ( " + PodcastConstants.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 			PodcastConstants.NAME + " TEXT NOT NULL) "),
-	PREPOPULATE_CATEGORIES("INSERT INTO " + PodcastConstants.CAT_TABLE + " (" + PodcastConstants.NAME + ") VALUES ('Entertainment');" +
-			"INSERT INTO " + PodcastConstants.CAT_TABLE + " (" + PodcastConstants.NAME + ") VALUES ('News');" +
-			"INSERT INTO " + PodcastConstants.CAT_TABLE + " (" + PodcastConstants.NAME + ") VALUES ('Comedy');");
+	INSERT_CAT_ENTERTAINMENT("INSERT INTO " + PodcastConstants.CAT_TABLE + " (" + PodcastConstants.NAME + ") VALUES ('Entertainment');"),
+	INSERT_CAT_NEWS("INSERT INTO " + PodcastConstants.CAT_TABLE + " (" + PodcastConstants.NAME + ") VALUES ('News');"),
+	INSERT_CAT_COMEDY("INSERT INTO " + PodcastConstants.CAT_TABLE + " (" + PodcastConstants.NAME + ") VALUES ('Comedy');");
 	
 	
 	private final String text;

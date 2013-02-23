@@ -60,6 +60,15 @@ public class CategoryDAO {
 		return categories;
 	}
 	
+	public List<String> getCategoriesAsString() {
+		List<String> catNames = new ArrayList<String>();
+		List<Category> cats = getAllCategories();
+		for (Category cat : cats) {
+			catNames.add(cat.toString());
+		}		
+		return catNames;
+	}
+	
 	private Category cursorToCategory(Cursor cursor) {
 		Category category = new Category();
 		category.setId(cursor.getLong(0));

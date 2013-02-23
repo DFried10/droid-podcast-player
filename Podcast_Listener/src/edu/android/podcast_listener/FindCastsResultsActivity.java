@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import org.jdom.Element;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -23,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ToggleButton;
 
@@ -38,6 +40,7 @@ import com.google.code.rome.android.repackaged.com.sun.syndication.io.XmlReader;
 import com.google.code.rome.android.repackaged.com.sun.syndication.io.impl.Atom10Parser;
 
 import edu.android.podcast_listener.adapters.ItemsAdapter;
+import edu.android.podcast_listener.db.CategoryDAO;
 import edu.android.podcast_listener.db.PodcastDAO;
 import edu.android.podcast_listener.rss.Channel;
 import edu.android.podcast_listener.rss.Item;
@@ -46,12 +49,15 @@ import edu.android.podcast_listener.util.PodcastConstants;
 
 public class FindCastsResultsActivity extends Activity {
 	ListView listView;
+	ListView listAlert;
 	String image;
 	String rssUrl;
+	String category;
 	ProgressDialog progressDialog;
 	String channelTitle;
 	ToggleButton toggleButton;
 	PodcastDAO podDB;
+	CategoryDAO catDB;
 	Channel channelInfo;
 	
 	@Override
@@ -85,7 +91,7 @@ public class FindCastsResultsActivity extends Activity {
 		boolean on = ((ToggleButton) view).isChecked();
 		podDB.open();
 		if (on) {
-			podDB.subscribeToPodcast(channelInfo.getTitle(), rssUrl, channelInfo.getImage(), "Entertainment");
+			podDB.subscribeToPodcast(channelInfo.getTitle(), rssUrl, channelInfo.getImage(), category);
 		} else {
 			podDB.unsubscribeFromPodcast(rssUrl);
 		}
@@ -103,13 +109,38 @@ public class FindCastsResultsActivity extends Activity {
 	}
 	
 	private void prepareActivityFields() {
-		podDB = new PodcastDAO(this);		
+		podDB = new PodcastDAO(this);
+		catDB = new CategoryDAO(this);
 		Intent intent = getIntent();
 		rssUrl = intent.getStringExtra(PodcastConstants.EXTRA_MESSAGE);
 		listView = (ListView) findViewById(R.id.podcastsList);
 		progressDialog = new ProgressDialog(this);
 		toggleButton = (ToggleButton) findViewById(R.id.subscribe_toggle);
 		checkIfSub(rssUrl);
+		category = "Uncategorized";
+	}
+	
+	public void onSetCategoryClicked(View view) {
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.category_choice);
+		dialog.setTitle("Select Category");
+		dialog.setCancelable(true);
+		
+		catDB.open();
+		final List<String> categoryNames = catDB.getCategoriesAsString();
+		listAlert = (ListView) dialog.findViewById(R.id.category_list);
+		listAlert.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.category_list_item, categoryNames));
+		listAlert.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				category = categoryNames.get(pos);
+				dialog.dismiss();
+			}
+		});
+		dialog.show();
+		catDB.close();
 	}
 	
 	@Override
