@@ -243,7 +243,7 @@ public class FindCastsResultsActivity extends Activity {
 			// Creates the feed list for the channel
 			if (feed.getImage() != null) {
 				channel.setImage(feed.getImage().getUrl());
-			}
+			} 
 			channel.setTitle(feed.getTitle());
 			Iterator itr = entries.iterator();
 			while (itr.hasNext()) {
@@ -269,27 +269,6 @@ public class FindCastsResultsActivity extends Activity {
 			channel.setItems(items);
 			
 			return channel;
-		}
-		
-		/**
-		 * The ROME library seems to occasionally return the incorrect
-		 * feed type, so it needs to be double checked, and parsed differently
-		 * if this is the case.
-		 * @param feed
-		 * @return true if an rss feed, false if an atom feed
-		 */
-		private boolean checkIfRSSFeed(SyndFeed feed) {
-			List<Element> markup = (ArrayList<Element>)feed.getForeignMarkup();
-			Pattern pattern = Pattern.compile("\\s*atom10\\s*");
-			
-			for (int i = 0; i < markup.size(); ++i) {
-				Element e = markup.get(i);
-				Matcher matcher = pattern.matcher(e.getNamespace().toString());
-				if (matcher.find()) {
-					return false;
-				}
-			}
-			return true;
 		}
 		
 		private String stripHTMLMarkupFromDescription(String description) {						

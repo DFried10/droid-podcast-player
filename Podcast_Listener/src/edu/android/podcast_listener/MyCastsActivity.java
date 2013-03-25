@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.Dialog;
 import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +12,12 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.SimpleExpandableListAdapter;
 import edu.android.podcast_listener.db.MyCastDatabase;
 import edu.android.podcast_listener.db.Podcast;
@@ -32,7 +37,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 		podcastDb = new PodcastDAO(this);
 		
 		setListAdapter(configListAdapter());
-		
+		getExpandableListView().setLongClickable(true);
 		getExpandableListView().setOnChildClickListener(new OnChildClickListener() {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
@@ -46,6 +51,23 @@ public class MyCastsActivity extends ExpandableListActivity {
 				startActivity(intent);
 				return true;
 			}
+		});
+		getExpandableListView().setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
+				ListView list = null;
+				final Dialog dialog = new Dialog(v.getContext());
+				dialog.setContentView(R.layout.category_choice);
+				dialog.setTitle("Options");
+				dialog.setCancelable(true);
+				final List<String> ops = new ArrayList<String>();
+				ops.add("Delete");				
+				list = (ListView) dialog.findViewById(R.id.category_list);
+				list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.category_list_item, ops));
+				dialog.show();
+				return true;
+			}
+			
 		});
 	}
 	
