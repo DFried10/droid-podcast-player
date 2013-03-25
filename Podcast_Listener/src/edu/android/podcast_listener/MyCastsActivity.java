@@ -185,7 +185,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 	}
 	
 	public void toCategories() {
-		Intent intent = new Intent(this, CategoryManagement.class);
+		Intent intent = new Intent(this, CategoryManagementActivity.class);
 		startActivity(intent);
 	}
 

@@ -32,6 +32,7 @@
     <string name="add_cat_hint">Add new category here</string>
     <string name="delete_cat_desc">To delete and existing category click and hold that category.  It will then be removed.</string>
     <string name="add_cat_label">Add Category</string>
+    <string name="new_cats_text">New Category</string>
     <!-- COLORS -->
     <color name="black">#000000</color>
     <color name="silver">#DBDBDB</color>

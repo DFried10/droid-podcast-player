@@ -165,7 +165,7 @@ public class FindCastsResultsActivity extends Activity {
 	}
 	
 	public void toCategories() {
-		Intent intent = new Intent(this, CategoryManagement.class);
+		Intent intent = new Intent(this, CategoryManagementActivity.class);
 		startActivity(intent);
 	}
 	

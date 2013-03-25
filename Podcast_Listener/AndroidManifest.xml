@@ -63,7 +63,7 @@
                 android:value="edu.android.podcast_listener.FindCastsActivity" />
         </activity>
         <activity
-            android:name="edu.android.podcast_listener.CategoryManagement"
+            android:name="edu.android.podcast_listener.CategoryManagementActivity"
             android:label="@string/title_activity_category_management" >
         </activity>
     </application>
