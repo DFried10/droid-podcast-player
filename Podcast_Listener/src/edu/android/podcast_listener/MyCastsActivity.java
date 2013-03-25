@@ -17,7 +17,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ListView;
 import android.widget.SimpleExpandableListAdapter;
 import edu.android.podcast_listener.db.Podcast;
@@ -28,6 +27,7 @@ import edu.android.podcast_listener.util.PodcastConstants;
 public class MyCastsActivity extends ExpandableListActivity {
 	PodcastDAO podcastDb;
 	ExpandableListView expList;
+	List<String> options;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,44 +36,25 @@ public class MyCastsActivity extends ExpandableListActivity {
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		podcastDb = new PodcastDAO(this);
+		createOptionsList();
 		
 		setListAdapter(configListAdapter());
 		getExpandableListView().setLongClickable(true);
-		getExpandableListView().setOnChildClickListener(new OnChildClickListener() {
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v,
-					int groupPosition, int childPosition, long id) {
-				SimpleExpandableListAdapter adapter = (SimpleExpandableListAdapter) parent.getExpandableListAdapter();
-				Intent intent = new Intent(getApplicationContext(), FindCastsResultsActivity.class);
-				Bundle bundle = new Bundle();
-				HashMap map = (HashMap)adapter.getChild(groupPosition, childPosition);
-				Podcast pod = (Podcast) map.get("Obj");
-				intent.putExtra(PodcastConstants.EXTRA_MESSAGE, pod.getUrl());
-				startActivity(intent);
-				return true;
-			}
-		});
 		getExpandableListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
-				ListView list = null;
+				ListView listAlert = null;
 				final AdapterView passSelectedItem = av;
 				final int positionToPass = pos;
-				final Dialog dialog = new Dialog(v.getContext());
-				dialog.setContentView(R.layout.category_choice);
-				dialog.setTitle("Options");
-				dialog.setCancelable(true);
-				final List<String> ops = new ArrayList<String>();
-				ops.add("Delete");				
-				list = (ListView) dialog.findViewById(R.id.category_list);
-				list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.category_list_item, ops));
+				final Dialog dialog = createOptionsDialog(v);			
+				listAlert = (ListView) dialog.findViewById(R.id.category_list);
+				listAlert.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.category_list_item, options));
 				
-				list.setOnItemClickListener(new OnItemClickListener() {
+				listAlert.setOnItemClickListener(new OnItemClickListener() {
 					@Override
-					public void onItemClick(AdapterView<?> av, View v, int pos,	long id) {
-						Object test = passSelectedItem;
+					public void onItemClick(AdapterView<?> subav, View subv, int subpos, long subid) {
 						HashMap p = (HashMap) passSelectedItem.getItemAtPosition(positionToPass);
-						Podcast pod = (Podcast) p.get("Obj");
+						Podcast pod = (Podcast) p.get(PodcastConstants.OBJ);
 						podcastDb.open();
 						podcastDb.unsubscribeFromPodcast(pod.getUrl());						
 						podcastDb.close();
@@ -88,6 +69,19 @@ public class MyCastsActivity extends ExpandableListActivity {
 		});
 	}
 	
+	private Dialog createOptionsDialog(View v) {
+		Dialog dialog = new Dialog(v.getContext());
+		dialog.setContentView(R.layout.category_choice);
+		dialog.setTitle("Options");
+		dialog.setCancelable(true);
+		return dialog;
+	}
+	
+	private List<String> createOptionsList() {
+		options = new ArrayList<String>();
+		options.add("Delete");
+		return options;
+	}
 	@Override
 	protected void onResume() {
 		super.onResume();		
@@ -133,7 +127,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 				if (p.getCategory().equals(cat)) {
 					HashMap child = new HashMap();
 					child.put(PodcastConstants.NAME, p.getName());
-					child.put("Obj", p);
+					child.put(PodcastConstants.OBJ, p);
 					selectList.add(child);
 				}
 			}
@@ -150,6 +144,12 @@ public class MyCastsActivity extends ExpandableListActivity {
 	
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+		SimpleExpandableListAdapter adapter = (SimpleExpandableListAdapter) parent.getExpandableListAdapter();
+		Intent intent = new Intent(getApplicationContext(), FindCastsResultsActivity.class);
+		HashMap map = (HashMap)adapter.getChild(groupPosition, childPosition);
+		Podcast pod = (Podcast) map.get(PodcastConstants.OBJ);
+		intent.putExtra(PodcastConstants.EXTRA_MESSAGE, pod.getUrl());
+		startActivity(intent);
 		return true;
 	}
 

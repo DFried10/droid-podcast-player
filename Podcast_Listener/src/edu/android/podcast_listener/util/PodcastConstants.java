@@ -23,4 +23,5 @@ public class PodcastConstants {
 	public final static String CATEGORY = "CATEGORY";
 	public final static String SUBSCRIBED = "SUBSCRIBED";
 	public final static String CAT_TABLE = "CATEGORIES";
+	public final static String OBJ = "Obj";
 }

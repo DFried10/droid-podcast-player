@@ -14,7 +14,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class PodcastDAO {
 	
-	private static final String DIV = ", ";
 	private SQLiteDatabase database;
 	private MyCastDatabase myCastDatabase;
 	private String[] allColumns = {PodcastConstants.ID, PodcastConstants.NAME, PodcastConstants.URL,

@@ -2,14 +2,9 @@ package edu.android.podcast_listener;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.jdom.Element;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -22,8 +17,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ToggleButton;
@@ -35,9 +32,6 @@ import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FeedF
 import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.FetcherException;
 import com.google.code.rome.android.repackaged.com.sun.syndication.fetcher.impl.HttpURLFeedFetcher;
 import com.google.code.rome.android.repackaged.com.sun.syndication.io.FeedException;
-import com.google.code.rome.android.repackaged.com.sun.syndication.io.SyndFeedInput;
-import com.google.code.rome.android.repackaged.com.sun.syndication.io.XmlReader;
-import com.google.code.rome.android.repackaged.com.sun.syndication.io.impl.Atom10Parser;
 
 import edu.android.podcast_listener.adapters.ItemsAdapter;
 import edu.android.podcast_listener.db.CategoryDAO;
@@ -130,11 +124,11 @@ public class FindCastsResultsActivity extends Activity {
 		final List<String> categoryNames = catDB.getCategoriesAsString();
 		listAlert = (ListView) dialog.findViewById(R.id.category_list);
 		listAlert.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.category_list_item, categoryNames));
+		
 		listAlert.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
-					long arg3) {
+			public void onItemClick(AdapterView<?> av, View v, int pos,
+					long id) {
 				category = categoryNames.get(pos);
 				dialog.dismiss();
 			}
@@ -181,6 +175,7 @@ public class FindCastsResultsActivity extends Activity {
         return feedFetcher.retrieveFeed(new URL(feedUrl));
     }
 	
+    @SuppressWarnings("rawtypes") 
 	class RSSAsyncActivity extends AsyncTask<String, Void, Channel> {
 		
 		@Override
