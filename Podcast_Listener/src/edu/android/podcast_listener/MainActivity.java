@@ -21,22 +21,12 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    public void sendMessage(View view) {
-//    	Intent intent = new Intent(this, DisplayMessageActivity.class);
-//    	EditText editText = (EditText) findViewById(R.id.editText1);
-//    	String message = editText.getText().toString();
-//    	intent.putExtra(EXTRA_MESSAGE, message);
-//    	startActivity(intent);
-    }
-    
     public void toMyCasts(View view) {
-    	// TODO - go to the MyCasts activity
     	Intent intent = new Intent(this, MyCastsActivity.class);
     	startActivity(intent);
     }
     
     public void toFindCasts(View view) {
-    	// TODO - go to the FindCasts activity
     	Intent intent = new Intent(this, FindCastsActivity.class);
     	startActivity(intent);
     }

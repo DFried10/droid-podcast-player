@@ -9,10 +9,14 @@ import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
@@ -38,7 +42,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 		podcastDb = new PodcastDAO(this);
 		createOptionsList();
 		
-		setListAdapter(configListAdapter());
+		setListAdapter(configListAdapter());		
 		getExpandableListView().setLongClickable(true);
 		getExpandableListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
@@ -173,8 +177,16 @@ public class MyCastsActivity extends ExpandableListActivity {
 			//
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+		case R.id.menu_categories:
+			toCategories();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void toCategories() {
+		Intent intent = new Intent(this, CategoryManagement.class);
+		startActivity(intent);
 	}
 
 }

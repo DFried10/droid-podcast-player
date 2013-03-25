@@ -157,8 +157,16 @@ public class FindCastsResultsActivity extends Activity {
 			//
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+		case R.id.menu_categories:
+			toCategories();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void toCategories() {
+		Intent intent = new Intent(this, CategoryManagement.class);
+		startActivity(intent);
 	}
 	
 	public SyndFeed getMostRecentNews( final String feedUrl ) {
