@@ -13,17 +13,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleExpandableListAdapter;
-import edu.android.podcast_listener.db.MyCastDatabase;
 import edu.android.podcast_listener.db.Podcast;
 import edu.android.podcast_listener.db.PodcastDAO;
 import edu.android.podcast_listener.util.PodcastConstants;
 
+@SuppressWarnings(value = {"unchecked", "rawtypes"})
 public class MyCastsActivity extends ExpandableListActivity {
 	PodcastDAO podcastDb;
 	ExpandableListView expList;
@@ -56,6 +57,8 @@ public class MyCastsActivity extends ExpandableListActivity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
 				ListView list = null;
+				final AdapterView passSelectedItem = av;
+				final int positionToPass = pos;
 				final Dialog dialog = new Dialog(v.getContext());
 				dialog.setContentView(R.layout.category_choice);
 				dialog.setTitle("Options");
@@ -64,6 +67,20 @@ public class MyCastsActivity extends ExpandableListActivity {
 				ops.add("Delete");				
 				list = (ListView) dialog.findViewById(R.id.category_list);
 				list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.category_list_item, ops));
+				
+				list.setOnItemClickListener(new OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> av, View v, int pos,	long id) {
+						Object test = passSelectedItem;
+						HashMap p = (HashMap) passSelectedItem.getItemAtPosition(positionToPass);
+						Podcast pod = (Podcast) p.get("Obj");
+						podcastDb.open();
+						podcastDb.unsubscribeFromPodcast(pod.getUrl());						
+						podcastDb.close();
+						dialog.dismiss();
+					}
+				});
+				
 				dialog.show();
 				return true;
 			}
