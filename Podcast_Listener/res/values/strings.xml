@@ -16,7 +16,8 @@
     <string name="title_activity_my_casts">MyCasts</string>
     <string name="title_activity_find_casts">Find Casts</string>
     <string name="title_activity_player">DroidCast Player</string>
-    <string name="title_activity_find_casts_results">FoundCasts</string>
+    <string name="title_activity_find_casts_results">Found Casts</string>
+    <string name="title_activity_category_management">Category Management</string>
     <string name="find_casts_button">Find Podcasts!</string>
     <string name="find_casts_hint">Enter RSS URL for Podcast</string>
     <string name="search_casts">Search for your favorite Podcasts</string>
@@ -27,13 +28,14 @@
     <string name="subscribed">Subscribed</string>
     <string name="category_text">Set Category</string>
     <string name="manage_cats">Manage Categories</string>
+    <string name="current_cats">Current Categories</string>
+    <string name="add_cat_hint">Add new category here</string>
+    <string name="delete_cat_desc">To delete and existing category click and hold that category.  It will then be removed.</string>
+    <string name="add_cat_label">Add Category</string>
     <!-- COLORS -->
     <color name="black">#000000</color>
     <color name="silver">#DBDBDB</color>
     <color name="blue">#94B0FF</color>
     <!-- Constants -->
-
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_category_management">CategoryManagement</string>
 
 </resources>
