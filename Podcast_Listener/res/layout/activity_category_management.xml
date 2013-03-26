@@ -1,80 +1,73 @@
-<ScrollView
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     android:id="@+id/ScrollView"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:orientation="vertical"
-     android:background="@color/black" >
-     
-	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:tools="http://schemas.android.com/tools"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:background="@color/black"
-	    tools:context=".CategoryManagement" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".CategoryManagement" >
     
-	    <TextView
-	        android:id="@+id/current_cats_title"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentTop="true"
-	        android:layout_centerHorizontal="true"
-	        android:text="@string/current_cats"
-	        android:textColor="@color/blue"
-	        android:textAppearance="?android:attr/textAppearanceLarge" />
-	    
-	    <ListView 
-	        android:id="@+id/current_categories"
-	        android:layout_width="match_parent"
-	        android:layout_height="300sp"
-	        android:layout_centerHorizontal="true"
-	        android:layout_marginTop="14dp"
-	        android:layout_below="@id/current_cats_title" >        
-	    </ListView>
-	    
-	    <TextView
-	        android:id="@+id/delete_text_desc"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/current_categories"
-	        android:layout_centerHorizontal="true"
-	        android:text="@string/delete_cat_desc"
-	        android:textColor="@color/silver"
-	        android:textAppearance="?android:attr/textAppearanceSmall" />
+    <TextView
+        android:id="@+id/add_cat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/new_cats_text"
+        android:textColor="@color/blue"
+        android:layout_marginTop="15dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	    <TextView
-	        android:id="@+id/add_cat_text"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/delete_text_desc"
-	        android:layout_centerHorizontal="true"
-	        android:text="@string/new_cats_text"
-	        android:textColor="@color/blue"
-	        android:layout_marginTop="15dp"
-	        android:textAppearance="?android:attr/textAppearanceLarge" />
-	
-	    <EditText
-	        android:id="@+id/add_new_cat_field"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/add_cat_text"
-	        android:layout_centerHorizontal="true"
-	        android:background="@color/silver"
-	        android:ems="10"
-	        android:hint="@string/add_cat_hint"
-	        android:textColor="@color/blue" >
-	    </EditText>
-	    
-	    <Button
-	        android:id="@+id/add_cat_button"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/add_new_cat_field"
-	        android:layout_centerHorizontal="true"
-	        android:layout_marginTop="15dp"
-	        android:text="@string/add_cat_label"
-	        android:textColor="@color/silver"
-	        android:onClick="addCategory" />
+    <EditText
+        android:id="@+id/add_new_cat_field"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_cat_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@color/silver"
+        android:ems="14"
+        android:hint="@string/add_cat_hint"
+        android:textColor="@color/black" >
+    </EditText>
+    
+    <Button
+        android:id="@+id/add_cat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_new_cat_field"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/add_cat_label"
+        android:textColor="@color/silver"
+        android:onClick="addCategory" />
+   
+    <TextView
+        android:id="@+id/current_cats_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/add_cat_button"
+        android:layout_marginTop="15dp"
+        android:text="@string/current_cats"
+        android:textColor="@color/blue"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/delete_text_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_cats_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/delete_cat_desc"
+        android:textColor="@color/silver"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    <ListView 
+        android:id="@+id/current_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:layout_below="@id/delete_text_desc" >        
+    </ListView>
 
-	</RelativeLayout>
-</ScrollView>
+</RelativeLayout>

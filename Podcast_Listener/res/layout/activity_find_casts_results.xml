@@ -18,11 +18,10 @@
    
     <ToggleButton
         android:id="@+id/subscribe_toggle"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/results_title"
-        android:layout_marginRight="64dp"
         android:checked="false"
         android:onClick="onToggleClicked"
         android:textColor="@color/silver"
@@ -40,10 +39,10 @@
 
     <Button
         android:id="@+id/set_category_button"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/results_title"
-        android:layout_toLeftOf="@id/subscribe_toggle"
+        android:layout_above="@+id/podcastsList"
+        android:layout_alignParentLeft="true"
         android:onClick="onSetCategoryClicked"
         android:text="@string/category_text"
         android:textColor="@color/silver"

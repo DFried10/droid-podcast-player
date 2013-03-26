@@ -59,9 +59,11 @@ public class MyCastsActivity extends ExpandableListActivity {
 					public void onItemClick(AdapterView<?> subav, View subv, int subpos, long subid) {
 						HashMap p = (HashMap) passSelectedItem.getItemAtPosition(positionToPass);
 						Podcast pod = (Podcast) p.get(PodcastConstants.OBJ);
-						podcastDb.open();
-						podcastDb.unsubscribeFromPodcast(pod.getUrl());						
-						podcastDb.close();
+						if (pod != null) {
+							podcastDb.open();
+							podcastDb.unsubscribeFromPodcast(pod.getUrl());						
+							podcastDb.close();
+						}
 						dialog.dismiss();
 					}
 				});

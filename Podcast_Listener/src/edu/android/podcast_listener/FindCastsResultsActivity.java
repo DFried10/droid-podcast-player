@@ -62,7 +62,7 @@ public class FindCastsResultsActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		prepareActivityFields();
-		
+		listView.setLongClickable(false);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,

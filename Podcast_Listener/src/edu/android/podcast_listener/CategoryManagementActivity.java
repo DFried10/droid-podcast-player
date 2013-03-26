@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import edu.android.podcast_listener.adapters.CategoryAdapter;
@@ -25,14 +26,16 @@ public class CategoryManagementActivity extends Activity {
 		setContentView(R.layout.activity_category_management);
 		categoryDb = new CategoryDAO(this);
 		setCategoryListAdapter();
-		listView.setOnItemClickListener(new OnItemClickListener() {
+		listView.setLongClickable(true);
+		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
+			public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
 				Category cat = (Category) av.getItemAtPosition(pos);
 				categoryDb.open();
 				categoryDb.deleteCategory(cat.getId());
 				categoryDb.close();
 				setCategoryListAdapter();
+				return true;
 			}
 			
 		});
@@ -50,7 +53,7 @@ public class CategoryManagementActivity extends Activity {
 	
 	public void addCategory(View view) {
 		categoryText = (EditText) findViewById(R.id.add_new_cat_field);
-		if (categoryText != null) {
+		if (categoryText != null && !categoryText.getText().toString().equals("")) {
 			categoryDb.open();
 			categoryDb.createCategory(categoryText.getText().toString());
 			categoryDb.close();
