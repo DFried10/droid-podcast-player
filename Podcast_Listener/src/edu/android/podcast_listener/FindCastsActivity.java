@@ -70,14 +70,19 @@ public class FindCastsActivity extends Activity {
 	}
 	
 	public void toResults(View view) {
-		String podcastUrl = urlInput.getText().toString();
+		String podcastUrl = getEntredURL();
 		Intent intent = new Intent(this, FindCastsResultsActivity.class);			
 		intent.putExtra(PodcastConstants.EXTRA_MESSAGE, podcastUrl);
 		startActivity(intent);
 	}
 	
 	public String getEntredURL() {
-		return urlInput.getText().toString();
+		String urlString = urlInput.getText().toString();
+		if (urlString.startsWith("http://") || urlString.startsWith("HTTP://")) {
+			return urlString;
+		} else {
+			return "http://" + urlString;
+		}
 	}
 	
 	static class ValidateUrlTask extends AsyncTask<Void, Void, Boolean> {
@@ -116,8 +121,7 @@ public class FindCastsActivity extends Activity {
 			} finally {
 				if (httpConn != null) {
 					httpConn.disconnect();
-				}
-					
+				}					
 			}
 			return isHttpOk;
 		}

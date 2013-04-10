@@ -11,14 +11,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
@@ -65,17 +61,16 @@ public class MyCastsActivity extends ExpandableListActivity {
 							podcastDb.open();
 							podcastDb.unsubscribeFromPodcast(pod.getUrl());						
 							podcastDb.close();
+							setListAdapter(configListAdapter());
 						} else {
 							unsupportedDeleteMessage();
 						}
 						dialog.dismiss();
 					}
-				});
-				
+				});				
 				dialog.show();
 				return true;
-			}
-			
+			}			
 		});
 	}
 	
