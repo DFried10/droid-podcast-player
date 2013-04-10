@@ -15,6 +15,8 @@ public class PodcastConstants {
 	public static final String ALERT_TITLE = "Podcast not found!";
 	public static final String ALERT_MESSAGE = "The podcast you searched for was not found, check to make sure you entered " +
 			"the correct URL for the podcast.";
+	public static final String UNSUPPORTED_ALERT = "Unsupported Action";
+	public static final String UNSUPPORTED_MESSAGE = "You cannot delete categories through this screen.  Please go to the Category Managament screen.";
 	public final static String TABLE = "PODCAST";
 	public final static String ID = "ID";
 	public final static String NAME = "NAME";

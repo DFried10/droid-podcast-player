@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ExpandableListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -63,6 +65,8 @@ public class MyCastsActivity extends ExpandableListActivity {
 							podcastDb.open();
 							podcastDb.unsubscribeFromPodcast(pod.getUrl());						
 							podcastDb.close();
+						} else {
+							unsupportedDeleteMessage();
 						}
 						dialog.dismiss();
 					}
@@ -189,6 +193,20 @@ public class MyCastsActivity extends ExpandableListActivity {
 	public void toCategories() {
 		Intent intent = new Intent(this, CategoryManagementActivity.class);
 		startActivity(intent);
+	}
+	
+	private void unsupportedDeleteMessage() {
+		AlertDialog dialog;
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(PodcastConstants.UNSUPPORTED_ALERT);
+		builder.setMessage(PodcastConstants.UNSUPPORTED_MESSAGE);
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {					
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.dismiss();
+			}
+		});
+		dialog = builder.create();
+		dialog.show();
 	}
 
 }
