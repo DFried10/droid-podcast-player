@@ -154,6 +154,7 @@ public class MyCastsActivity extends ExpandableListActivity {
 		HashMap map = (HashMap)adapter.getChild(groupPosition, childPosition);
 		Podcast pod = (Podcast) map.get(PodcastConstants.OBJ);
 		intent.putExtra(PodcastConstants.EXTRA_MESSAGE, pod.getUrl());
+		intent.putExtra(PodcastConstants.TITLE_MESSAGE, pod.getName());
 		startActivity(intent);
 		return true;
 	}

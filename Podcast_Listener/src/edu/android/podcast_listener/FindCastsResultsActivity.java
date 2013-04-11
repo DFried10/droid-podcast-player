@@ -1,6 +1,11 @@
 package edu.android.podcast_listener;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.Date;
 import java.util.Iterator;
@@ -12,6 +17,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -112,6 +118,9 @@ public class FindCastsResultsActivity extends Activity {
 		toggleButton = (ToggleButton) findViewById(R.id.subscribe_toggle);
 		checkIfSub(rssUrl);
 		category = "Uncategorized";
+		if (intent.getStringExtra(PodcastConstants.TITLE_MESSAGE) != null) {
+			channelTitle = intent.getStringExtra(PodcastConstants.TITLE_MESSAGE);
+		}
 	}
 	
 	public void onSetCategoryClicked(View view) {
@@ -135,6 +144,61 @@ public class FindCastsResultsActivity extends Activity {
 		});
 		dialog.show();
 		catDB.close();
+	}
+	
+	private void saveList() {
+		final File cache_dir = this.getCacheDir();
+		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + "PodList.dat");
+		
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		boolean keep = true;
+		
+		try {
+			fos = new FileOutputStream(suspend_f);
+			oos = new ObjectOutputStream(fos);
+			
+			oos.writeObject(this.channelInfo);
+		} catch (Exception e) {
+			Log.e(PodcastConstants.ERROR_TAG, "Saving Didn't Work: " + e.getMessage());
+			keep = false;
+		} finally {
+			try {
+	            if (oos != null)   oos.close();
+	            if (fos != null)   fos.close();
+	            if (keep == false) suspend_f.delete();
+	        }
+	        catch (Exception e) { /* do nothing */ }
+		}
+	}
+	
+	private Channel readList() {
+		final File cache_dir = this.getCacheDir();
+		final File suspend_f = new File(cache_dir.getAbsoluteFile() + File.separator + "PodList.dat");
+		Channel _channel = null;
+		
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		boolean keep = true;
+		
+		try {
+			fis = new FileInputStream(suspend_f);
+			ois = new ObjectInputStream(fis);
+			
+			_channel = (Channel) ois.readObject();
+		} catch (Exception e) {
+			keep = false;
+			Log.e(PodcastConstants.ERROR_TAG, "Reading Didn't Work: " + e.getMessage());
+		} finally {
+			try {
+	            if (ois != null)   ois.close();
+	            if (fis != null)   fis.close();
+	            if (keep == false) suspend_f.delete();
+	        }
+	        catch (Exception ex) { /* do nothing */ }
+		}
+		
+		return _channel;
 	}
 	
 	@Override
@@ -189,24 +253,32 @@ public class FindCastsResultsActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			progressDialog = ProgressDialog.show(FindCastsResultsActivity.this,"","Just a second, getting your podcast...", true,false);
+			channelInfo = readList();
+			if (((channelInfo != null) && (channelInfo.getTitle() == null)) || ((channelInfo != null) && (!channelInfo.getTitle().equals(channelTitle))))
+				channelInfo = null;
 			super.onPreExecute();
 		}
 		
 		@Override
 		protected Channel doInBackground(String... urls) {
-			try {				
+			try {
 				Channel channel = null;
-				URL url = new URL(urls[0]);
 				
-				Log.d(PodcastConstants.DEBUG_TAG, "Entered the XML Parsing section: " + url.toString());
-				SyndFeed feed = getMostRecentNews(urls[0]);					
-				
-				if (feed != null) {
-					channel = rssFeedParser(feed);
+				if (channelInfo == null) {				
+					URL url = new URL(urls[0]);
+					
+					Log.d(PodcastConstants.DEBUG_TAG, "Entered the XML Parsing section: " + url.toString());
+					SyndFeed feed = getMostRecentNews(urls[0]);					
+					
+					if (feed != null) {
+						channel = rssFeedParser(feed);
+					}
+					
+					Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
+					progressDialog.dismiss();
+				} else {
+					channel = channelInfo;
 				}
-				
-				Log.d(PodcastConstants.DEBUG_TAG, "Completed parsing RSS feed");
-				progressDialog.dismiss();
 				
 				return channel;
 			} catch (IOException e) {
@@ -226,6 +298,7 @@ public class FindCastsResultsActivity extends Activity {
 					listView.setAdapter(adapter);
 					image = channel.getImage();
 					channelTitle = channel.getTitle();
+					saveList();
 				} catch (NullPointerException e) {
 					Log.wtf(PodcastConstants.WTF_TAG, "Something bad happened while parsing the XML, so we got here: " + e.getMessage());
 				}
@@ -248,6 +321,7 @@ public class FindCastsResultsActivity extends Activity {
 				channel.setImage(feed.getImage().getUrl());
 			} 
 			channel.setTitle(feed.getTitle());
+			channel.setLink(feed.getLink());
 			Iterator itr = entries.iterator();
 			while (itr.hasNext()) {
 				SyndEntry entry = (SyndEntry) itr.next();
