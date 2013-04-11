@@ -110,67 +110,56 @@ public class PlayerActivity extends Activity implements MediaPlayerControl, OnPr
 
 	@Override
 	public boolean canPause() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean canSeekBackward() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean canSeekForward() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public int getBufferPercentage() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getCurrentPosition() {
-		// TODO Auto-generated method stub
 		return mediaPlayer.getCurrentPosition();
 	}
 
 	@Override
 	public int getDuration() {
-		// TODO Auto-generated method stub
 		return mediaPlayer.getDuration();
 	}
 
 	@Override
 	public boolean isPlaying() {
-		// TODO Auto-generated method stub
 		return mediaPlayer.isPlaying();
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 		mediaPlayer.pause();
 	}
 
 	@Override
 	public void seekTo(int time) {
-		// TODO Auto-generated method stub
 		mediaPlayer.seekTo(time);
 	}
 
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
 		mediaPlayer.start();
 	}
 
 	@Override
 	public void onPrepared(MediaPlayer mediaPlayer) {
-		// TODO Auto-generated method stub
 		Log.d("Player", "onPrepared");
 		mediaController.setMediaPlayer(this);
 		mediaController.setAnchorView(findViewById(R.id.main_player_view));

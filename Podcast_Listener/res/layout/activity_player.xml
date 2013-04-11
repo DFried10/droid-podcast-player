@@ -38,6 +38,8 @@
         android:id="@+id/podcastImage"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/episodeTitle" />
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/episodeTitle"
+        android:contentDescription="@string/channel_img_text"/>
 
 </RelativeLayout>
